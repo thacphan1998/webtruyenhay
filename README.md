@@ -23,3 +23,4 @@ php artisan make:model User (done)
 4. Migrations
 php artisan make:migration add_slug_to_categories_table --table=categories
 php artisan make:migration add_slug_to_stories_table --table=stories
+test
