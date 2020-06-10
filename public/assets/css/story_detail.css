@@ -1,0 +1,20 @@
+.story-detail-page .container {
+    background-color: #fff;
+}
+
+.story-detail-page .c-breadcrumb h2 {
+    color: red;
+    text-align: center;
+    font-size: 35px;
+    font-weight: 600;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.story-detail-page .c-breadcrumb .r-author {
+    text-align: center;
+}
+
+.story-detail-page .c-breadcrumb .r-author .fa-user {
+    color: #999;
+}

@@ -1,0 +1,368 @@
+.story-page .etail-thumbnail {
+    width: 100%;
+    height: 280px;
+    padding-left: 8px;
+}
+
+.story-page img {
+    box-shadow: 1px 1px 3px #ccc;
+    width: 212px;
+    height: 280px;
+}
+
+.story-page .detail-info {
+    padding: 5px 5px 5px 20px;
+    width: 223px;
+}
+
+.story-page .w3-ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.story-page .detail-info ul li {
+    font-size: 14px;
+    letter-spacing: -0.5px;
+    padding: 5px 0 0;
+    border: none;
+}
+
+.story-page .detail-info a {
+    color: #007bff;
+    text-decoration: none;
+    background-color: transparent;
+}
+
+.story-page .detail-info a:hover {
+    color: #444;
+}
+
+.story-page .detail-info span {
+    color: #e74c3c;
+}
+
+.story-page .detail-center h1 {
+    text-align: center;
+    font-size: 25px;
+    font-weight: bold;
+    letter-spacing: -1px;
+}
+
+.story-page .detail-center h1 a {
+    color: #e74c3c;
+    text-decoration: none;
+}
+
+.story-page .detail-button {
+    margin-bottom: 10px !important;
+    margin-top: 10px !important;
+    text-align: center !important;
+}
+
+.story-page .w3-hover-white:hover {
+    color: #000 !important;
+    background-color: #fff !important;
+}
+
+.story-page .w3-btn {
+    box-shadow: none;
+    border: none;
+    display: inline-block;
+    overflow: hidden;
+    text-decoration: none !important;
+    white-space: nowrap;
+    padding: 6px 16px;
+}
+
+.story-page .detail-button a {
+    font-size: 15px;
+    background: #2c7abe;
+    color: #fff;
+    border-radius: 3px;
+    padding: 3px 10px;
+    margin: 3px;
+}
+
+.story-page .w3-blue {
+    background: #2980b9 !important;
+    color: #fff !important;
+}
+
+.story-page .w3-round {
+    border-radius: 2px !important;
+}
+
+.story-page .w3-justify {
+    text-align: justify !important;
+    font-size: 15px;
+}
+
+.story-page article[data-readmore] {
+    display: block;
+    width: 100%;
+    transition: height 500ms;
+    overflow: hidden;
+    margin-top: 20px;
+    padding-right: 15px;
+}
+
+.story-page article + [data-readmore-toggle] {
+    display: block;
+    width: 100%;
+}
+
+.story-page .w3-justify a {
+    color: #007bff;
+    text-decoration: none;
+    background-color: transparent;
+}
+
+.story-page .w3-justify a:hover {
+    color: #444;
+}
+
+/* phần danh sách chương truyện */
+
+.story-page .list-content .content-ds h4 {
+    font-size: 15px;
+    color: #999;
+    background-color: transparent;
+}
+
+.story-page .list-content .content-ds h4 a {
+    color: #444;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.story-page .list-content .content-ds h4 a:hover {
+    color: #2980b9;
+}
+
+.story-page .list-content .content-ds h4 a:visited {
+    color: #999;
+}
+
+.story-page .list-content {
+    padding: 6px 2px 6px 16px;
+}
+
+.story-page .left-content-item h4 {
+    font-size: 15px;
+    margin: 0;
+    display: inline;
+}
+
+.story-page .left-content-item .content-ds span {
+    color: #999;
+    font-size: 12px;
+    font-style: italic;
+    margin-left: auto;
+    margin-right: 10px;
+}
+
+.story-page .content-ds .w3-right {
+    float: right;
+}
+
+/* phần comment */
+.story-page .comment-form {
+    margin: 15px 0;
+    padding: 10px 0;
+    width: 100%;
+}
+
+.story-page .comment-form textarea {
+    background: #f2f2f2;
+    width: 100%;
+    height: 70px;
+    padding: 5px 8px;
+    overflow: auto;
+    font: inherit;
+}
+
+.story-page .w3-round {
+    border-radius: 2px !important;
+}
+
+.story-page .comment-count {
+    color: #999;
+    font-style: italic;
+    font-size: 13px;
+    text-align: left;
+    margin-top: 0 !important;
+    padding: 0 17px;
+}
+
+.story-page .number {
+    color: #e74c3c;
+    font-weight: 600;
+}
+
+.story-page .comment {
+    display: flex;
+}
+
+.story-page .comment-button {
+    text-align: right;
+    margin-bottom: 10px;
+    padding: 0 20px;
+    margin-left: auto;
+    max-width: 16%;
+}
+
+.story-page .w3-btn:disabled {
+    cursor: not-allowed;
+    opacity: 0.3;
+}
+
+.story-page .comment-button button {
+    border-radius: 2px;
+    padding: 5px 10px;
+    margin-left: 5px;
+}
+
+.story-page .button-send {
+    background: #2980b9;
+}
+
+.story-page .w3-btn {
+    border: none;
+    display: inline-block;
+    outline: 0;
+    /* padding: 6px 16px; */
+    vertical-align: middle;
+    overflow: hidden;
+    text-decoration: none !important;
+    color: #fff;
+    /* background-color: #000; */
+    text-align: center;
+    /* cursor: pointer; */
+    white-space: nowrap;
+}
+
+.story-page .comment-error label {
+    background: #ffe6e6;
+    color: #e74c3c;
+    font-size: 15px;
+    border-radius: 3px;
+    text-align: center;
+    padding: 8px;
+    display: block;
+}
+
+.story-page .comment-form input {
+    background: #f2f2f2;
+    padding: 5px 8px;
+}
+
+.story-page .comment-row {
+    min-height: 70px;
+    border-top: 1px solid #e5e6e9;
+    padding: 10px 0;
+}
+
+.story-page .comment-left {
+    width: 65px;
+    height: 50px;
+    padding-left: 15px;
+}
+
+.story-page .comment-right {
+    margin-left: 60px;
+}
+
+.story-page #comment-list {
+    width: 100%;
+}
+
+.story-page .comment-item{
+    display: flex;
+    border-top: 1px solid #ccc;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.story-page .content-ds {
+    display: flex;
+    width: 100%;
+}
+
+.story-page .comment-left img {
+    width: 100%;
+    height: 50px;
+}
+.story-page .w3-left {
+    float: left !important;
+}
+
+.story-page .w3-circle {
+    border-radius: 50% !important;
+}
+
+/* phần thông tin đăng nhập bình luận */
+
+/* .story-page form {border: 3px solid #f1f1f1;} */
+
+.story-page input[type=text], input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+  }
+
+  .story-page button {
+    background-color: #0000EE;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+  }
+
+  .story-page button:hover {
+    opacity: 0.8;
+  }
+
+  .story-page .modal-header .close {
+    width: 50px;
+    height: 55px;
+    background-color: #fff;
+  }
+
+  .story-page .modal-header .close span {
+    color: #333;
+  }
+
+  .story-page .modal-header .close span:hover {
+    color: #000;
+  }
+
+  .story-page .modal-header .modal-title {
+    text-align: center;
+    width: 100%;
+    font-size: 25px;
+    color: blue;
+  }
+
+  .story-page .modal-body .container a {
+    color: #007bff;
+    text-decoration: none;
+  }
+
+  .story-page .modal-body .container a:hover {
+      color: #444;
+  }
+
+  .story-page .modal-footer {
+    color: #000 !important;
+    background-color: #f1f1f1 !important;
+    padding: 8px 16px !important;
+    border-top: 1px solid #ccc !important;
+}
