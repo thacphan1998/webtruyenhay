@@ -6,14 +6,26 @@
             {{-- Left --}}
             <div class="col-md-8" style="background: #EEEEEE; padding-right: 15px;">
                 <div class="left-content">
-                    <div class="row" id="page-breadcrum">
+                    <div class="row" id="page-breadcrum" style="margin-bottom: 10px; margin-left: -4px">
                         <div class="col-md-12">
                             <div class="w3-round sitemap" itemscope itemtype="#">
                                 <div itemprop="itemListElement" itemscope itemtype="#" style="float: left;">
-                                    <a href="http://localhost:81/thac/php-framework/lar-thac98/public/trang-chu" itemprop="item">
+                                    <a href="{{url('/trang-chu')}}" itemprop="item">
                                         <span itemprop="name">
                                             <i class="fa fa-home"></i>
                                             Trang Chủ
+                                        </span>
+                                    </a>
+                                    <a href="{{url('/'.$categoryName->slug)}}" itemprop="item">
+                                        <span itemprop="name">
+                                            <i class="fas fa-angle-right"></i>
+                                            {{$categoryName->name}}
+                                        </span>
+                                    </a>
+                                    <a href="javascript:;" style="cursor: default;" itemprop="item">
+                                        <span itemprop="name">
+                                            <i class="fas fa-angle-right"></i>
+                                            {{$currentStory->name}}
                                         </span>
                                     </a>
                                     <meta itemprop="position" content="1">
@@ -37,7 +49,7 @@
                                     </li>
                                     <li>
                                         <i class="fa fa-tags" style="margin: 0 5px; color: #999"></i>
-                                        <a title="Kiếm hiệp" href="#">Kiếm hiệp</a>
+                                        <a title="{{$categoryName->name}}" href="#">{{$categoryName->name}}</a>
                                     </li>
                                     <li>
                                         <i class="fas fa-cloud-download-alt" style="margin: 0 5px; color: #999"></i>
@@ -45,7 +57,7 @@
                                     </li>
                                     <li>
                                         <i class="fa fa-eye" style="margin: 0 5px; color: #999"></i>
-                                        <b>7285124</b>
+                                        <b>{{$currentStory->number_of_reads}}</b>
                                     </li>
                                     <li>
                                         <i class="fa fa-rss" style="margin: 0 5px; color: #999"></i>
@@ -53,11 +65,11 @@
                                     </li>
                                     <li>
                                         <i class="fas fa-cloud-upload-alt" style="margin: 0 5px; color: #999"></i>
-                                        <time datetime="2015-06-04T23:11:21+07:00">23:11:21 04/06/2015</time>
+                                        <time datetime="2015-06-04T23:11:21+07:00">{{$currentStory->created_at}}</time>
                                     </li>
                                     <li>
                                         <i class="fas fa-pen-square" style="margin: 0 5px; color: #999"></i>
-                                        <time datetime="2020-04-10T06:19:26+07:00">06:19:26 10/04/2020</time>
+                                        <time datetime="2020-04-10T06:19:26+07:00">{{$currentStory->updated_at}}</time>
                                     </li>
                                 </ul>
                             </div>
@@ -66,20 +78,20 @@
                         <div class="col-md-8">
                             <div class="detail-center">
                                 <h1>
-                                    <a href="#" title="Toàn Chức Cao Thủ">{{$currentStory->name}}</a>
+                                    <a href="#" title="{{$currentStory->name}}">{{$currentStory->name}}</a>
                                 </h1>
                             </div>
                             <div class="detail-button">
-                                {{-- <a href="#" title="Đến danh sách chương" rel="nofollow" class="w3-btn w3-round w3-blue w3-hover-white" onclick="gotodschuong()">
+                                <!-- {{-- <a href="#" title="Đến danh sách chương" rel="nofollow" class="w3-btn w3-round w3-blue w3-hover-white" onclick="gotodschuong()">
                                     <i class="fa fa-list"></i>
                                     DS Chương
-                                </a> --}}
+                                </a> --}} -->
                                 <a class="w3-btn w3-round w3-blue w3-hover-white" title="Đọc truyện Toàn Chức Cao Thủ" href="{{url('/truyen/chi-tiet/'.$currentStory->slug)}}">
                                     <i class="fa fa-eye"></i>
                                     Đọc truyện
                                 </a>
                             </div>
-                            <div class="detail-button">
+                            <div class="detail-button" style="margin-right: 100px; margin-left: 100px;">
                                 <button id="bt_a_d_fs" onclick="openModal('login')" class="w3-btn w3-round w3-blue w3-hover-white">
                                     <i class="far fa-heart"></i>
                                     Thêm vào truyện Yêu Thích
@@ -98,40 +110,32 @@
                         <div class="col-md-12 first-title">
                             <h2 class="category-title">
                                 <i class="fa fa-list"></i>
-                                Danh sách chương truyện Toàn Chức Cao Thủ
+                                Danh sách truyện {{str_replace("Truyện","",$categoryName->name)}}
                             </h2>
                         </div>
-                        <div class="col-md-12 list-content" style="display: flex;">
-                            <div class="content-ds">
-                                <h4>
-                                    <a title="Cao thủ bị trục xuất." href="#">Chương 1 - Cao Thủ Bị Trục Xuất.</a>
-                                </h4>
-                                <span class="w3-right w3-hide-small">04/06/2015</span>
+                        @foreach($storyList as $storyListItem)
+                        <div class="col-md-12 list-content" style="display: flex; padding-left: 0;">
+                            <div class="col-sm-7">
+                                <span><i class="fa fa-chevron-right"></i></span>
+                                <span>
+                                    <a href="{{ url('/truyen/'.$storyListItem->slug) }}" title="{{$storyListItem->name}}">{{$storyListItem->name}}</a>
+                                </span>
+                            </div>
+                            <div class="col-sm-3">
+                                <!-- <span class="row-link">Chương 172</span> -->
+                            </div>
+                            <div class="col-sm-2">
+                                <span class="row-text">mới đây</span>
                             </div>
                         </div>
-                        <div class="col-md-12 list-content" style="display: flex;">
-                            <div class="content-ds">
-                                <h4>
-                                    <a title="Cao thủ bị trục xuất." href="#">Chương 1 - Cao Thủ Bị Trục Xuất.</a>
-                                </h4>
-                                <span class="w3-right w3-hide-small">04/06/2015</span>
-                            </div>
-                        </div>
-                        <div class="col-md-12 list-content" style="display: flex;">
-                            <div class="content-ds">
-                                <h4>
-                                    <a title="Cao thủ bị trục xuất." href="#">Chương 1 - Cao Thủ Bị Trục Xuất.</a>
-                                </h4>
-                                <span class="w3-right w3-hide-small">04/06/2015</span>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                     <!-- phần bình luận truyện -->
                     <div class="row left-content-item comment-member">
                         <div class="col-md-12 first-title">
-                            <i class="fa fa-comments"></i>
+                            <i class="fa fa-comments" style="color: #2980b9; margin-right: 5px; font-size: 25px;"></i>
                             <h3 class="category-title">
-                                Bình luận về truyện Toàn Chức Cao Thủ
+                                Nhận xét của đọc giả về truyện {{$currentStory->name}}
                             </h3>
                         </div>
                         <form class="comment-form" style="margin: 15px 0" name="formcm" action="/method/comment" method="post" enctype="multipart/form-data" onsubmit="return checkvailcm()">
@@ -145,7 +149,7 @@
                                 </div>
                                 <div class=" col-sm-6 comment-button">
                                     <button disabled="disabled" type="button" id="btcm" name="btcm" onclick class="w3-btn button-send">
-                                        <i class="fa fa-send"></i>
+                                        <i class="fas fa-paper-plane"></i>
                                         Gửi
                                     </button>
                                 </div>
@@ -202,324 +206,54 @@
 
                     <div class="row right-content-item">
                         <div class="col-md-12">
-                            <h2 class=" category-title" style="text-transform: none;">Truyện Tiên Hiệp Hay <i class="fas fa-chevron-right icon" style="font-size: 20px; margin-bottom: 2px;"></i></h2>
+                            <h2 class=" category-title" style="text-transform: none;">Truyện Hay <i class="fas fa-chevron-right icon" style="font-size: 20px; margin-bottom: 2px;"></i></h2>
                         </div>
+                        @foreach($storyHot as $index => $storyHotItem)
                         <div class="col-md-12 sidebar-content" style="display: flex; padding: 0; border-bottom: 1px dashed #e5e6e9;">
                             <div class="col-sm-2 top-left">
-                                <span class="top-number top-one">1</span>
+                                <span class="top-number top-one">{{$index+1}}</span>
                             </div>
                             <div class="col-sm-10 top-right">
-                                <a title="Ngạo Thế Đan Thần" href="#">Ngạo Thế Đan Thần</a>
+                                <a title="{{$storyHotItem ->name}}" href="{{ url('/truyen/'.$storyHotItem->slug) }}">{{$storyHotItem ->name}}</a>
                                 <span class="sidebar-caption">
                                     <i class="fa fa-eye"></i>
-                                    7689372
+                                    {{$storyHotItem ->number_of_reads}}
                                 </span>
                             </div>
                         </div>
-                        <div class="col-md-12 sidebar-content" style="display: flex; padding: 0; border-bottom: 1px dashed #e5e6e9;">
-                            <div class="col-sm-2 top-left">
-                                <span class="top-number top-one">2</span>
-                            </div>
-                            <div class="col-sm-10 top-right">
-                                <a title="Kiếm Đạo Độc Tôn" href="#">Kiếm Đạo Độc Tôn</a>
-                                <span class="sidebar-caption">
-                                    <i class="fa fa-eye"></i>
-                                    874592474
-                                </span>
-                            </div>
-                        </div>
-                        <div class="col-md-12 sidebar-content" style="display: flex; padding: 0; border-bottom: 1px dashed #e5e6e9;">
-                            <div class="col-sm-2 top-left">
-                                <span class="top-number top-one">3</span>
-                            </div>
-                            <div class="col-sm-10 top-right">
-                                <a title="Thần Đạo Đan Tôn" href="#">Thần Đạo Đan Tôn</a>
-                                <span class="sidebar-caption">
-                                    <i class="fa fa-eye"></i>
-                                    6219324
-                                </span>
-                            </div>
-                        </div>
-                        <div class="col-md-12 sidebar-content" style="display: flex; padding: 0; border-bottom: 1px dashed #e5e6e9;">
-                            <div class="col-sm-2 top-left">
-                                <span class="top-number top-one">4</span>
-                            </div>
-                            <div class="col-sm-10 top-right">
-                                <a title="Ép Yêu 100 Ngày" href="#">Ép Yêu 100 Ngày</a>
-                                <span class="sidebar-caption">
-                                    <i class="fa fa-eye"></i>
-                                    3298752
-                                </span>
-                            </div>
-                        </div>
-                        <div class="col-md-12 sidebar-content" style="display: flex; padding: 0; border-bottom: 1px dashed #e5e6e9;">
-                            <div class="col-sm-2 top-left">
-                                <span class="top-number top-one">5</span>
-                            </div>
-                            <div class="col-sm-10 top-right">
-                                <a title="Hôn Trộm 55 Lần" href="#">Hôn Trộm 55 Lần</a>
-                                <span class="sidebar-caption">
-                                    <i class="fa fa-eye"></i>
-                                    9283463
-                                </span>
-                            </div>
-                        </div>
-                        <div class="col-md-12 sidebar-content" style="display: flex; padding: 0; border-bottom: 1px dashed #e5e6e9;">
-                            <div class="col-sm-2 top-left">
-                                <span class="top-number top-one">6</span>
-                            </div>
-                            <div class="col-sm-10 top-right">
-                                <a title="Linh Vũ Thiên Hạ" href="#">Linh Vũ Thiên Hạ</a>
-                                <span class="sidebar-caption">
-                                    <i class="fa fa-eye"></i>
-                                    23476535
-                                </span>
-                            </div>
-                        </div>
-                        <div class="col-md-12 sidebar-content" style="display: flex; padding: 0; border-bottom: 1px dashed #e5e6e9;">
-                            <div class="col-sm-2 top-left">
-                                <span class="top-number top-one">7</span>
-                            </div>
-                            <div class="col-sm-10 top-right">
-                                <a title="Hệ Thống Liên Minh" href="#">Hệ Thống Liên Minh</a>
-                                <span class="sidebar-caption">
-                                    <i class="fa fa-eye"></i>
-                                    2937583
-                                </span>
-                            </div>
-                        </div>
-                        <div class="col-md-12 sidebar-content" style="display: flex; padding: 0; border-bottom: 1px dashed #e5e6e9;">
-                            <div class="col-sm-2 top-left">
-                                <span class="top-number top-one">8</span>
-                            </div>
-                            <div class="col-sm-10 top-right">
-                                <a title="Ám Khí Diệt Quỷ Nhân" href="#">Ám Khí Diệt Quỷ Nhân</a>
-                                <span class="sidebar-caption">
-                                    <i class="fa fa-eye"></i>
-                                    29836507
-                                </span>
-                            </div>
-                        </div>
-                        <div class="col-md-12 sidebar-content" style="display: flex; padding: 0; border-bottom: 1px dashed #e5e6e9;">
-                            <div class="col-sm-2 top-left">
-                                <span class="top-number top-one">9</span>
-                            </div>
-                            <div class="col-sm-10 top-right">
-                                <a title="Quân Nhân Tại Thượng" href="#">Quân Nhân Tại Thượng</a>
-                                <span class="sidebar-caption">
-                                    <i class="fa fa-eye"></i>
-                                    22975445
-                                </span>
-                            </div>
-                        </div>
-                        <div class="col-md-12 sidebar-content" style="display: flex; padding: 0; border-bottom: 1px dashed #e5e6e9;">
-                            <div class="col-sm-2 top-left">
-                                <span class="top-number top-one">10</span>
-                            </div>
-                            <div class="col-sm-10 top-right">
-                                <a title="Mùa Hạ Nồng Nhiệt" href="#">Mùa Hạ Nồng Nhiệt</a>
-                                <span class="sidebar-caption">
-                                    <i class="fa fa-eye"></i>
-                                    7454363
-                                </span>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
 
                     <!-- phần truyện mới đăng -->
                     <div class="row right-content-item">
                         <div class="col-md-12">
-                            <h2 class=" category-title" style="text-transform: none;">Truyện Tiên Hiệp Mới <i class="fas fa-chevron-right icon" style="font-size: 20px; margin-bottom: 2px;"></i></h2>
+                            <h2 class=" category-title" style="text-transform: none;">Truyện Mới Đăng <i class="fas fa-chevron-right icon" style="font-size: 20px; margin-bottom: 2px;"></i></h2>
                         </div>
+                        @foreach($storyLatest as $index => $storyLatestItem)
                         <div class="col-md-12 sidebar-content" style="display: flex; padding: 0; border-bottom: 1px dashed #e5e6e9;">
                             <div class="col-sm-2 top-left">
-                                <span class="top-number top-one">1</span>
+                                <span class="top-number top-one">{{$index+1}}</span>
                             </div>
                             <div class="col-sm-10 top-right">
-                                <a title="Cuộc Sống Sau Khi Trọng Sinh Của Bạch Nguyệt Quang" href="#">Cuộc Sống Sau Khi Trọng Sinh Của Bạch Nguyệt Quang</a>
+                                <a title="{{$storyLatestItem ->name}}" href="{{ url('/truyen/'.$storyLatestItem->slug) }}">{{$storyLatestItem ->name}}</a>
                                 <span class="sidebar-caption">
                                     <i class="fa fa-eye"></i>
-                                    2
+                                    {{$storyLatestItem ->number_of_reads}}
                                 </span>
                             </div>
                         </div>
-                        <div class="col-md-12 sidebar-content" style="display: flex; padding: 0; border-bottom: 1px dashed #e5e6e9;">
-                            <div class="col-sm-2 top-left">
-                                <span class="top-number top-one">2</span>
-                            </div>
-                            <div class="col-sm-10 top-right">
-                                <a title="Hệ Thống Liên Minh" href="#">Hệ Thống Liên Minh</a>
-                                <span class="sidebar-caption">
-                                    <i class="fa fa-eye"></i>
-                                    874
-                                </span>
-                            </div>
-                        </div>
-                        <div class="col-md-12 sidebar-content" style="display: flex; padding: 0; border-bottom: 1px dashed #e5e6e9;">
-                            <div class="col-sm-2 top-left">
-                                <span class="top-number top-one">3</span>
-                            </div>
-                            <div class="col-sm-10 top-right">
-                                <a title="Người Mẹ Quỷ" href="#">Người Mẹ Quỷ</a>
-                                <span class="sidebar-caption">
-                                    <i class="fa fa-eye"></i>
-                                    621
-                                </span>
-                            </div>
-                        </div>
-                        <div class="col-md-12 sidebar-content" style="display: flex; padding: 0; border-bottom: 1px dashed #e5e6e9;">
-                            <div class="col-sm-2 top-left">
-                                <span class="top-number top-one">4</span>
-                            </div>
-                            <div class="col-sm-10 top-right">
-                                <a title="Nữ Sát Thủ Ta Yêu Nàng" href="#">Nữ Sát Thủ Ta Yêu Nàng</a>
-                                <span class="sidebar-caption">
-                                    <i class="fa fa-eye"></i>
-                                    32
-                                </span>
-                            </div>
-                        </div>
-                        <div class="col-md-12 sidebar-content" style="display: flex; padding: 0; border-bottom: 1px dashed #e5e6e9;">
-                            <div class="col-sm-2 top-left">
-                                <span class="top-number top-one">5</span>
-                            </div>
-                            <div class="col-sm-10 top-right">
-                                <a title="Hôn Trộm 55 Lần" href="#">Hôn Trộm 55 Lần</a>
-                                <span class="sidebar-caption">
-                                    <i class="fa fa-eye"></i>
-                                    9283463
-                                </span>
-                            </div>
-                        </div>
-                        <div class="col-md-12 sidebar-content" style="display: flex; padding: 0; border-bottom: 1px dashed #e5e6e9;">
-                            <div class="col-sm-2 top-left">
-                                <span class="top-number top-one">6</span>
-                            </div>
-                            <div class="col-sm-10 top-right">
-                                <a title="Linh Vũ Thiên Hạ" href="#">Linh Vũ Thiên Hạ</a>
-                                <span class="sidebar-caption">
-                                    <i class="fa fa-eye"></i>
-                                    23476535
-                                </span>
-                            </div>
-                        </div>
-                        <div class="col-md-12 sidebar-content" style="display: flex; padding: 0; border-bottom: 1px dashed #e5e6e9;">
-                            <div class="col-sm-2 top-left">
-                                <span class="top-number top-one">7</span>
-                            </div>
-                            <div class="col-sm-10 top-right">
-                                <a title="Lên Tàu Ở London Bridge" href="#">Lên Tàu Ở London Bridge</a>
-                                <span class="sidebar-caption">
-                                    <i class="fa fa-eye"></i>
-                                    2937
-                                </span>
-                            </div>
-                        </div>
-                        <div class="col-md-12 sidebar-content" style="display: flex; padding: 0; border-bottom: 1px dashed #e5e6e9;">
-                            <div class="col-sm-2 top-left">
-                                <span class="top-number top-one">8</span>
-                            </div>
-                            <div class="col-sm-10 top-right">
-                                <a title="Ám Khí Diệt Quỷ Nhân" href="#">Ám Khí Diệt Quỷ Nhân</a>
-                                <span class="sidebar-caption">
-                                    <i class="fa fa-eye"></i>
-                                    29836507
-                                </span>
-                            </div>
-                        </div>
-                        <div class="col-md-12 sidebar-content" style="display: flex; padding: 0; border-bottom: 1px dashed #e5e6e9;">
-                            <div class="col-sm-2 top-left">
-                                <span class="top-number top-one">9</span>
-                            </div>
-                            <div class="col-sm-10 top-right">
-                                <a title="Sau Khi Nhiếp Chính Vương Trúng Độc Tình" href="#">Sau Khi Nhiếp Chính Vương Trúng Độc Tình</a>
-                                <span class="sidebar-caption">
-                                    <i class="fa fa-eye"></i>
-                                    2293
-                                </span>
-                            </div>
-                        </div>
-                        <div class="col-md-12 sidebar-content" style="display: flex; padding: 0; border-bottom: 1px dashed #e5e6e9;">
-                            <div class="col-sm-2 top-left">
-                                <span class="top-number top-one">10</span>
-                            </div>
-                            <div class="col-sm-10 top-right">
-                                <a title="Người Theo Đuổi Ánh Sáng" href="#">Người Theo Đuổi Ánh Sáng</a>
-                                <span class="sidebar-caption">
-                                    <i class="fa fa-eye"></i>
-                                    74543
-                                </span>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                     <div class="row right-content-item">
                         <div class="col-md-12">
                             <h2 class=" category-title">Thể loại truyện <i class="fas fa-chevron-right icon" style="font-size: 20px; margin-bottom: 2px;"></i></h2>
                         </div>
+                        @foreach($categories as $categoryItem)
                         <div class="col-md-6">
                             <span class="cate-icon"><i class="fa fa-tags"></i></span>
-                            <a class="cate-name" href="#">Tiên Hiệp</a>
+                            <a class="cate-name" href="{{ url('/' . $categoryItem->slug) }}">{{$categoryItem ->name}}</a>
                         </div>
-                        <div class="col-md-6">
-                            <span class="cate-icon"><i class="fa fa-tags"></i></span>
-                            <a class="cate-name" href="#">Kiếm Hiệp</a>
-                        </div>
-                        <div class="col-md-6">
-                            <span class="cate-icon"><i class="fa fa-tags"></i></span>
-                            <a class="cate-name" href="#">Truyện Teen</a>
-                        </div>
-                        <div class="col-md-6">
-                            <span class="cate-icon"><i class="fa fa-tags"></i></span>
-                            <a class="cate-name" href="#">Ngôn Tình</a>
-                        </div>
-                        <div class="col-md-6">
-                            <span class="cate-icon"><i class="fa fa-tags"></i></span>
-                            <a class="cate-name" href="#">Truyện Ma</a>
-                        </div>
-                        <div class="col-md-6">
-                            <span class="cate-icon"><i class="fa fa-tags"></i></span>
-                            <a class="cate-name" href="#">Truyện ngắn</a>
-                        </div>
-                        <div class="col-md-6">
-                            <span class="cate-icon"><i class="fa fa-tags"></i></span>
-                            <a class="cate-name" href="#">Truyện Cười</a>
-                        </div>
-                        <div class="col-md-6">
-                            <span class="cate-icon"><i class="fa fa-tags"></i></span>
-                            <a class="cate-name" href="#">Tiểu Thuyết</a>
-                        </div>
-                        <div class="col-md-6">
-                            <span class="cate-icon"><i class="fa fa-tags"></i></span>
-                            <a class="cate-name" href="#">Lịch Sử</a>
-                        </div>
-                        <div class="col-md-6">
-                            <span class="cate-icon"><i class="fa fa-tags"></i></span>
-                            <a class="cate-name" href="#">Xuyên Không</a>
-                        </div>
-                        <div class="col-md-6">
-                            <span class="cate-icon"><i class="fa fa-tags"></i></span>
-                            <a class="cate-name" href="#">Dị Giới</a>
-                        </div>
-                        <div class="col-md-6">
-                            <span class="cate-icon"><i class="fa fa-tags"></i></span>
-                            <a class="cate-name" href="#">Trinh Thám</a>
-                        </div>
-                        <div class="col-md-6">
-                            <span class="cate-icon"><i class="fa fa-tags"></i></span>
-                            <a class="cate-name" href="#">Võng Du</a>
-                        </div>
-                        <div class="col-md-6">
-                            <span class="cate-icon"><i class="fa fa-tags"></i></span>
-                            <a class="cate-name" href="#">Quân Sự</a>
-                        </div>
-                        <div class="col-md-6">
-                            <span class="cate-icon"><i class="fa fa-tags"></i></span>
-                            <a class="cate-name" href="#">Khoa Huyễn</a>
-                        </div>
-                        <div class="col-md-6">
-                            <span class="cate-icon"><i class="fa fa-tags"></i></span>
-                            <a class="cate-name" href="#">Đam Mỹ</a>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>

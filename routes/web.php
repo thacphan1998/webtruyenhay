@@ -34,10 +34,25 @@ Route::get('/them-moi-the-loai', function () {
     return view('add_new_category');
 });
 
+
 //---> Sửa
 Route::get('/sua/theloai/{id}','CategoryController@edit');
 Route::put('/edit/category/{id}','CategoryController@update');
 Route::delete('/delete/category/{id}','CategoryController@destroy');
+
+//---> Routes Author
+Route::get('/quanlytacgia', 'AuthorController@index');
+Route::post('/create/author','AuthorController@store');
+
+Route::get('/them-moi-tac-gia', function () {
+    return view('add_new_author');
+});
+
+
+//---> Sửa
+Route::get('/sua/tacgia/{id}','AuthorController@edit');
+Route::put('/edit/author/{id}','AuthorController@update');
+Route::delete('/delete/author/{id}','AuthorController@destroy');
 
 Route::get('/quanlynguoidung', 'UserController@index');
 Route::post('/create/user', 'UserController@store');
@@ -66,7 +81,13 @@ Route::delete('/delete/comment/{id}','CommentController@destroy');
 
 //---> Front-end
 Route::get('/trang-chu', 'HomeController@home');
-
+Route::get('/tim-kiem', 'HomeController@searchStory');
+Route::get('/moi-cap-nhat', 'HomeController@latestStory');
+Route::get('/moi-dang', 'HomeController@newPostStory');
+Route::get('/xem-nhieu', 'HomeController@viewMoreStory');
+Route::get('/yeu-thich', 'HomeController@favouriteStory');
+Route::get('/truyen-full', 'HomeController@fullStory');
+Route::get('/truyen-vip', 'HomeController@vipStory');
 Route::get('/{category_slug}', 'HomeController@category');
 
 Route::get('/truyen/{story_slug}', 'HomeController@story');

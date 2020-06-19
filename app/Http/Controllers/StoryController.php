@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Category;
+use App\Author;
 use Illuminate\Http\Request;
 use App\Story;
 
@@ -29,7 +30,8 @@ class StoryController extends Controller
     public function create()
     {
         $categories = Category::all();
-        return view('add_new_story', compact('categories'));
+        $authors = Author::all();
+        return view('add_new_story', compact('categories', 'authors'));
     }
 
     /**
@@ -53,6 +55,7 @@ class StoryController extends Controller
             'number_of_reads' => '',
             'number_of_downloads' => '',
             'category_id' => '',
+            'author_id' => '',
             'image' => '',
             'slug' => ''
             
@@ -83,7 +86,8 @@ class StoryController extends Controller
     {
         $story = Story::where('id', $id)->first();
         $categories = Category::all();
-        return view('edit_story', compact('story', 'id', 'categories'));
+        $authors = Author::all();
+        return view('edit_story', compact('story', 'id', 'categories', 'authors'));
     }
 
     /**
@@ -108,6 +112,7 @@ class StoryController extends Controller
             'number_of_reads' => '',
             'number_of_downloads' => '',
             'category_id' => '',
+            'author_id' => '',
             'slug' => ''
         ]);
         $data['id'] = $id;

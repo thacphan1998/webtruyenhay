@@ -1,3 +1,7 @@
+textarea:focus, input:focus{
+    outline: none;
+}
+
 header {
     background-color: #EC5B24;
     height: 50px;
@@ -6,6 +10,8 @@ header {
     left: 0;
     right: 0;
     z-index: 9;
+    -webkit-box-shadow: 0 4px 12px 0 rgba(0,0,0,.5);
+    box-shadow: 0 4px 12px 0 rgba(0,0,0,.5);
 }
 
 .header-wrap {
@@ -97,6 +103,53 @@ header {
     color: white;
     font-size: 15px;
     padding: 0 5px;
+    display: flex
+}
+
+.header-wrap .search-wrap input{
+    width: 85%;
+    height: 29px;
+    font-size: 15px;
+    padding: 3px 10px;
+    border-top-left-radius: 2px;
+    border-top-right-radius: 0;
+    border-bottom-left-radius: 2px;
+    border-bottom-right-radius: 0;
+    border: 1px solid #fff;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.header-wrap .search-wrap input:focus{
+    border: 1px solid dodgerblue;
+    box-shadow: 0 0 8px 0 dodgerblue;
+}
+
+.header-wrap .search-wrap button.search-bar-button {
+    width: 15%;
+    height: 29px;
+    background: #e5e6e9;
+    color: #444;
+    font-size: 16px;
+    padding: 1px 12px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 2px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 2px;
+    border: none;
+    display: inline-block;
+    outline: 0;
+    padding: 0px 16px;
+    vertical-align: middle;
+    overflow: hidden;
+    text-decoration: none!important;
+    text-align: center;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.header-wrap .search-wrap button.search-bar-button:hover{
+    background-color: #cccccc;
 }
 
 .header-wrap .login {
@@ -107,6 +160,7 @@ header {
     display: flex;
     height: 100%;
     align-items: center;
+    margin-left: auto;
 }
 
 .header-wrap .login:hover {
@@ -129,7 +183,7 @@ header {
 }
 
 #content {
-    margin-top: 50px;
+    margin-top: 55px;
 }
 
 .item-story a:hover {
@@ -187,9 +241,12 @@ header {
     text-align: center;
     font-size: 14px;
     font-weight: 600;
-    height: 10px;
+    height: 30px;
     padding-top: 12px;
     padding-bottom: 12px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .item-story-bottom .title a {
@@ -221,7 +278,7 @@ header {
 }
 
 .category-title {
-    color: blue;
+    color: #2980b9;
     text-transform: uppercase;
     font-size: 20px;
     font-weight: 600;
@@ -625,5 +682,10 @@ header {
     display: block;
 }
 .icon-title{
-    color: blue!important;
+    color: #2980b9!important;
+}
+
+.no-result{
+    padding-left: 15px;
+    padding-right: 15px;
 }

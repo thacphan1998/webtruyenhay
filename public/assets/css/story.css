@@ -305,8 +305,6 @@
 
 /* phần thông tin đăng nhập bình luận */
 
-/* .story-page form {border: 3px solid #f1f1f1;} */
-
 .story-page input[type=text], input[type=password] {
     width: 100%;
     padding: 12px 20px;
@@ -348,7 +346,7 @@
     text-align: center;
     width: 100%;
     font-size: 25px;
-    color: blue;
+    color: #3858B3;
   }
 
   .story-page .modal-body .container a {
@@ -365,4 +363,18 @@
     background-color: #f1f1f1 !important;
     padding: 8px 16px !important;
     border-top: 1px solid #ccc !important;
+}
+
+.story-page .icon {
+    color: #2980b9!important;
+}
+
+.story-page .sitemap a {
+    color: #999;
+    font-size: 13px;
+}
+
+.story-page .sitemap a:hover {
+    color: #444444;
+    text-decoration: none;
 }

@@ -29,7 +29,7 @@
     <header>
         <div class="header-wrap">
             <div class="logo" ; title="Truyen hay online">
-                <a class="logo-href" href="/thac/php-framework/lar-thac98/public/trang-chu">
+                <a class="logo-href" href="{{url('/trang-chu')}}">
                     <span class="icon"><i class="fas fa-book-open"></i></span>
                     <h1>Truyen hay online</h1>
                 </a>
@@ -50,27 +50,33 @@
                 <a class="before-icon" href="#">Sắp Xếp</a>
                 <div class="row menu-list-order-drop">
                     <div class="col-md-6 menu-item">
-                        <a href="" title="Truyện Mới Cập Nhật"><span class="icon"><i class="fa fa-tags"></i></span>Mới Cập Nhật</a>
+                        <a href="{{url('/moi-cap-nhat')}}" title="Truyện Mới Cập Nhật"><span class="icon"><i class="fa fa-tags"></i></span>Mới Cập Nhật</a>
                     </div>
                     <div class="col-md-6 menu-item">
-                        <a href="" title="Truyện Mới Đăng"><span class="icon"><i class="fa fa-tags"></i></span>Mới Đăng</a>
+                        <a href="{{url('/moi-dang')}}" title="Truyện Mới Đăng"><span class="icon"><i class="fa fa-tags"></i></span>Mới Đăng</a>
                     </div>
                     <div class="col-md-6 menu-item">
-                        <a href="" title="Truyện Được Đọc Nhiều"><span class="icon"><i class="fa fa-tags"></i></span>Xem Nhiều</a>
+                        <a href="{{url('/xem-nhieu')}}" title="Truyện Được Xem Nhiều"><span class="icon"><i class="fa fa-tags"></i></span>Xem Nhiều</a>
                     </div>
                     <div class="col-md-6 menu-item">
-                        <a href="" title="Truyện Được Yêu Thích"><span class="icon"><i class="fa fa-tags"></i></span>Yêu thích</a>
+                        <a href="{{url('/yeu-thich')}}" title="Truyện Được Yêu Thích"><span class="icon"><i class="fa fa-tags"></i></span>Yêu thích</a>
                     </div>
                     <div class="col-md-6 menu-item">
-                        <a href="" title="Truyện Full"><span class="icon"><i class="fa fa-tags"></i></span>Truyện Full</a>
+                        <a href="{{url('/truyen-full')}}" title="Truyện Full Hay Nhất"><span class="icon"><i class="fa fa-tags"></i></span>Truyện Full</a>
                     </div>
                     <div class="col-md-6 menu-item">
-                        <a href="" title="Truyện VIP"><span class="icon"><i class="fa fa-tags"></i></span>Truyện VIP</a>
+                        <a href="{{url('/truyen-vip')}}" title="Truyện VIP"><span class="icon"><i class="fa fa-tags"></i></span>Truyện VIP</a>
                     </div>
                 </div>
             </div>
             <div class="search-wrap">
-                <input placeholder="Tìm kiếm" type="search" />
+                <form action="{{url('/tim-kiem')}}" method="GET" role="search">
+                    <div class="input-group">
+                        <input placeholder="Tìm kiếm" type="search" name="query"/>
+                        <button class=" search-bar-button" type="submit"><i class="fa fa-search"></i></button>
+                    </div>
+                </form>
+
             </div>
             <div class="login">
                 <span class="icon"><i class="fa fa-user"></i></span>

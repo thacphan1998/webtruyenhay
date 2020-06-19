@@ -111,6 +111,15 @@
                     @endforeach
                   </select>
                 </div>
+                {{-- Thể loại --}}
+                <div class="form-group">
+                  <label>Tác giả</label>
+                  <select name='author_id' class="form-control">
+                    @foreach($authors as $key=>$author)
+                    <option value="{{$author->id}}">{{$author->name}}</option>
+                    @endforeach
+                  </select>
+                </div>
                 {{-- Slug --}}
                 <div class="form-group">
                   <label for="slug">Slug</label>

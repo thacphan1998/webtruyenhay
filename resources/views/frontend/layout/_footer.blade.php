@@ -58,7 +58,7 @@
                         <h3 class="title">Giới thiệu</h3>
                     </div>
                     <div class="footer-block-content">
-                        <p><a href="#">Truyenhay.com</a>- Đọc Truyện Online Miễn Phí | Truyện Hay, Truyện Mới. Website luôn cập nhật những bộ truyện mới thuộc các thể loại đặc sắc như truyện tiên hiệp, kiếm hiệp, truyện teen, tiểu thuyết ngôn tình nhanh nhất.</p>
+                        <p><a href="#" title="Truyenhayonline">Truyenhay.com</a>- Đọc Truyện Online Miễn Phí | Truyện Hay, Truyện Mới. Website luôn cập nhật những bộ truyện mới thuộc các thể loại đặc sắc như truyện tiên hiệp, kiếm hiệp, truyện teen, tiểu thuyết ngôn tình nhanh nhất.</p>
                     </div>
                 </div>
             </div>
@@ -70,12 +70,9 @@
                     <div class="footer-block-content">
                         <div class="footer-block-list">
                             <p>Email: phandinhthac8798@gmail.com</p>
-                            <p>
-                                <a rel="nofollow" target="_blank" href="https://www.facebook.com/thac.phan.8.7">
-                                    <span class="block-list-icon">
-                                        <i class="truyen-icon icon-phone"></i>
-                                    </span>
-                                    facebook
+                            <p style="font-size: 30px">
+                                <a class="icon-info" title="Fanpge của truyenhayonline.com" href="https://www.facebook.com/Truyenhayonline-112873297134194/?modal=admin_todo_tour" rel="nofollow">
+                                    <i class="fab fa-facebook"></i>
                                 </a>
                             </p>
                         </div>
@@ -90,7 +87,7 @@
     $(document).ready(function() {
         $(window).scroll(function() {
             var top = $(".goto-top");
-            if ($('body').height() <= ($(window).height() + $(window).scrollTop() + 200)) {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
                 top.animate({
                     "margin-left": "0px"
                 }, 1500);
@@ -109,6 +106,15 @@
                 scrollTop: 0
             }, 400);
         });
+
+        const timeAgo = $(".time-ago");
+        if (timeAgo && timeAgo.text() !== '') {
+            timeAgo.each(function(index, el) {
+                const newText = $(el).text().replace('days', 'ngày').replace('day', 'ngày').replace('week', 'tuần').replace('weeks', 'tuần').replace('months', 'tháng').replace('month', 'tháng').replace('years', 'năm').replace('year', 'năm').replace('hour', 'giờ').replace('hours', 'giờ').replace('minutes', 'phút').replace('minute', 'phút').replace('seconds', 'giây').replace('second', 'giây').replace('ago', 'trước');
+                $(el).text(newText);
+            })
+
+        }
     });
 </script>
 </body>

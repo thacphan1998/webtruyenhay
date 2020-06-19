@@ -68,3 +68,18 @@
     color: #ccc;
     display: block;
 }
+
+.category-page .sitemap a {
+    color: #999;
+    font-size: 13px;
+}
+
+.category-page .sitemap a:hover {
+    color: #444;
+    text-decoration: none;
+}
+
+.category-page .sitemap i {
+    margin-right: 3px;
+    margin-left: 2px;
+}

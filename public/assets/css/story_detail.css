@@ -13,8 +13,324 @@
 
 .story-detail-page .c-breadcrumb .r-author {
     text-align: center;
+    font-size: 18x;
+}
+
+.story-detail-page .c-breadcrumb .r-author a {
+    text-decoration: none;
+    color: #999;
+}
+
+.story-detail-page .c-breadcrumb .r-author a:hover {
+    color: #0056b3;
 }
 
 .story-detail-page .c-breadcrumb .r-author .fa-user {
     color: #999;
+}
+
+.story-detail-page .c-breadcrumb .r-update {
+    text-align: center;
+    padding: 10px 0 20px 0;
+    font-size: 16px;
+    font-weight: 400;
+    color: #999;
+    font-family: "noticia text", "times new roman", serif;
+}
+
+.story-detail-page .c-breadcrumb {
+    border: 2px dotted #ccc;
+    border-radius: 10px;
+    padding: 5px;
+    margin-bottom: 10px;
+    margin-top: 25px;
+}
+
+.story-detail-page .story-content {
+    font-size: 26px;
+    text-align: justify;
+    margin: 5px 5px 20px 5px;
+    white-space: pre-line;
+    word-break: break-word;
+    font-family: ebook1, "noticia text", "times new roman", serif;
+    font-weight: 400;
+    color: #333;
+    line-height: 35px;
+}
+
+.story-detail-page .c-author {
+    font-size: 25px;
+    font-style: italic;
+    color: #3498db;
+    text-align: center;
+    margin-bottom: 30px;
+    border: 1px dashed #3498db;
+    padding: 8px 0;
+    border-radius: 8px !important;
+    font-family: ebook1, "noticia text", "times new roman", serif;
+    font-weight: 400;
+}
+
+.story-detail-page .c-author span b {
+    font-weight: 700;
+}
+
+/* phần bình luận  */
+/* phần comment */
+
+.story-detail-page .first-title {
+    display: flex;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #ecf0f1;
+    border-top: 11px solid #eeeeee;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.story-detail-page .comment-form {
+    margin: 15px 0;
+    padding: 10px 0;
+    width: 100%;
+}
+
+.story-detail-page .comment-form textarea {
+    background: #f2f2f2;
+    width: 100%;
+    height: 70px;
+    padding: 5px 8px;
+    overflow: auto;
+    font: inherit;
+}
+
+.story-detail-page .w3-round {
+    border-radius: 2px !important;
+}
+
+.story-detail-page .comment-count {
+    color: #999;
+    font-style: italic;
+    font-size: 13px;
+    text-align: left;
+    margin-top: 0 !important;
+    padding: 0 17px;
+}
+
+.story-detail-page .number {
+    color: #e74c3c;
+    font-weight: 600;
+}
+
+.story-detail-page .comment {
+    display: flex;
+}
+
+.story-detail-page .comment-button {
+    text-align: right;
+    margin-bottom: 10px;
+    padding: 0 20px;
+    margin-left: auto;
+    max-width: 16%;
+}
+
+.story-detail-page .w3-btn:disabled {
+    cursor: not-allowed;
+    opacity: 0.3;
+}
+
+.story-detail-page .comment-button button {
+    border-radius: 2px;
+    padding: 5px 10px;
+    margin-left: 5px;
+}
+
+.story-detail-page .button-send {
+    background: #2980b9;
+}
+
+.story-detail-page .w3-btn {
+    border: none;
+    display: inline-block;
+    outline: 0;
+    /* padding: 6px 16px; */
+    vertical-align: middle;
+    overflow: hidden;
+    text-decoration: none !important;
+    color: #fff;
+    /* background-color: #000; */
+    text-align: center;
+    /* cursor: pointer; */
+    white-space: nowrap;
+}
+
+.story-detail-page .comment-error label {
+    background: #ffe6e6;
+    color: #e74c3c;
+    font-size: 15px;
+    border-radius: 3px;
+    text-align: center;
+    padding: 8px;
+    display: block;
+}
+
+.story-detail-page .comment-form input {
+    background: #f2f2f2;
+    padding: 5px 8px;
+}
+
+.story-detail-page .comment-row {
+    min-height: 70px;
+    border-top: 1px solid #e5e6e9;
+    padding: 10px 0;
+}
+
+.story-detail-page .comment-left {
+    width: 65px;
+    height: 50px;
+    padding-left: 15px;
+}
+
+.story-detail-page .comment-right {
+    margin-left: 60px;
+}
+
+.story-detail-page #comment-list {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.story-detail-page .comment-item {
+    display: flex;
+    border-top: 1px solid #ccc;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.story-detail-page .content-ds {
+    display: flex;
+    width: 100%;
+}
+
+.story-detail-page .comment-left img {
+    width: 100%;
+    height: 50px;
+}
+.story-detail-page .w3-left {
+    float: left !important;
+}
+
+.story-detail-page .w3-circle {
+    border-radius: 50% !important;
+}
+
+.story-detail-page .modal-header .close {
+    width: 50px;
+    height: 55px;
+    background-color: #fff;
+}
+
+.story-detail-page .modal-header .close span {
+    color: #333;
+}
+
+.story-detail-page .modal-header .close span:hover {
+    color: #000;
+}
+
+.story-detail-page .modal-header .modal-title {
+    text-align: center;
+    width: 100%;
+    font-size: 25px;
+    color: #3858b3;
+}
+
+/* phần thông tin đăng nhập bình luận */
+
+.story-detail-page input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+.story-detail-page button {
+    background-color: #0000ee;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+
+.story-detail-page button:hover {
+    opacity: 0.8;
+}
+
+/* phần dẫn link */
+
+.story-detail-page .sitemap a {
+    color: #999;
+    font-size: 13px;
+}
+
+.story-detail-page .sitemap a:hover {
+    color: #444444;
+    text-decoration: none;
+}
+
+/* phần danh sách liên quan */
+.story-detail-page .left-content-item {
+    background-color: #ffffff;
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    padding-top: 10px;
+    border: none;
+    margin-left: -15px;
+}
+
+.story-detail-page .list-content .content-ds h4 {
+    font-size: 15px;
+    color: #999;
+    background-color: transparent;
+}
+
+.story-detail-page .list-content .content-ds h4 a {
+    color: #444;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.story-detail-page .list-content .content-ds h4 a:hover {
+    color: #2980b9;
+}
+
+.story-detail-page .list-content .content-ds h4 a:visited {
+    color: #999;
+}
+
+.story-detail-page .list-content {
+    padding: 6px 2px 6px 16px;
+}
+
+.story-detail-page .left-content-item h4 {
+    font-size: 15px;
+    margin: 0;
+    display: inline;
+}
+
+.story-detail-page .left-content-item .content-ds span {
+    color: #999;
+    font-size: 12px;
+    font-style: italic;
+    margin-left: auto;
+    margin-right: 10px;
+}
+
+.story-detail-page .content-ds .w3-right {
+    float: right;
 }

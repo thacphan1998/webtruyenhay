@@ -22,6 +22,7 @@ class Story extends Model
         $this->number_of_reads = $data['number_of_reads'];
         $this->number_of_downloads = $data['number_of_downloads'];
         $this->category_id = $data['category_id'];
+        $this->author_id = $data['author_id'];
         $this->image = $data['image'];
         $this->user_id = 1;
         $this->slug = $data['slug'];
@@ -43,6 +44,7 @@ class Story extends Model
         $story->number_of_reads = $data['number_of_reads'];
         $story->number_of_downloads = $data['number_of_downloads'];
         $story->category_id = $data['category_id'];
+        $story->author_id = $data['author_id'];
         $story->slug = $data['slug'];
         $story->user_id = 1;
         $story->save();

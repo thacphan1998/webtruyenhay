@@ -48,5 +48,21 @@ $.widget.bridge('uibutton', $.ui.button)
 <script src="dist/js/pages/dashboard.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="dist/js/demo.js"></script>
+<script>
+    $(document).ready(function(){
+        const pathArr = window.location.pathname.split("/");
+        const activePath = pathArr[pathArr.length-1];
+        console.log("activePath", activePath);
+        $(".has-treeview").removeClass('menu-open');
+        $(".nav-link").removeClass('active');
+        $('.nav-treeview .nav-link').removeClass('active');
+        const elMenuActive = activePath ? $(`#${activePath}`) : null;
+        if(elMenuActive){
+            elMenuActive.addClass('active');
+            elMenuActive.closest(".has-treeview").addClass("menu-open");
+            elMenuActive.closest(".has-treeview").find(".parent").addClass("active")
+        }
+    });
+</script>
 </body>
 </html>
