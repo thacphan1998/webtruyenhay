@@ -12,12 +12,20 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('dang-ky', 'Auth\RegisterController@register');
+Route::post('register', 'Auth\RegisterController@storeUser');
 
-Route::get('/','StoryController@index');
+Route::get('/dang-nhap', 'HomeController@login')->name('login');
+// Route::post('/login', 'HomeController@postLogin');
+// Route::get('login', 'Auth\LoginController@login')->name('login');
+Route::post('login', 'Auth\LoginController@authenticate');
+Route::get('dang-xuat', 'Auth\LoginController@logout')->name('logout');
+
+Route::get('/','StoryController@index')->middleware('auth');
 
 //---> Routes Story
 
-Route::get('/quanlytruyen', 'StoryController@index');
+Route::get('/quanlytruyen', 'StoryController@index')->middleware('auth');;
 //---> Thêm mới
 Route::post('/create/story','StoryController@store');
 Route::get('/them-moi-truyen', 'StoryController@create');

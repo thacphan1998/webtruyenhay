@@ -41,7 +41,7 @@
                 <li class="nav-item">
                     <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
                 </li>
-                
+
             </ul>
 
             <!-- SEARCH FORM -->
@@ -57,10 +57,14 @@
             </form> -->
 
             <!-- Right navbar links -->
-            <!-- <ul class="navbar-nav ml-auto">
+            <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a href="#"><i class="fas fa-user"></i> Thac Phan</a>
+                    @if (isset(Auth::user()->email))
+                        <a href="{{url('/dang-xuat')}}"><i class="fas fa-sign-out"></i>Đăng xuất</a>
+                    @else
+                        <a href="{{url('/dang-nhap')}}"><i class="fas fa-sign-in"></i>Đăng nhập</a>
+                    @endif
                 </li>
-            </ul> -->
+            </ul>
         </nav>
         <!-- /.navbar -->

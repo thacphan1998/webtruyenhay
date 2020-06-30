@@ -9,6 +9,7 @@ use App\Story;
 
 class StoryController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -58,12 +59,12 @@ class StoryController extends Controller
             'author_id' => '',
             'image' => '',
             'slug' => ''
-            
+
         ]);
         if ($request->hasFile('file')) {
             $destinationPath = 'path/th/save/file/';
             $files = $request->file('file'); // will get all files
-        
+
             foreach ($files as $file) {//this statement will loop through all files.
                 $file_name = $file->getClientOriginalName(); //Get file original name
                 $file->move($destinationPath , $file_name); // move files to destination folder

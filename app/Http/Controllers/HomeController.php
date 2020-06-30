@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Category;
 use App\Story;
+use App\User;
 
 class HomeController extends Controller
 {
@@ -160,5 +162,31 @@ class HomeController extends Controller
         $storyHot = Story::orderBy('number_of_downloads', 'DESC')->limit(10)->get();
         $storyLatest = Story::orderBy('created_at', 'DESC')->limit(10)->get();
         return view('frontend/story_vip', compact('storiesvip', 'categories', 'storyHot', 'storyLatest'));
+    }
+
+    public function login() {
+        return view('frontend/login');
+    }
+
+    public function postLogin(Request $request){
+
+        $this->validate($request, [
+            'email'=>'required',
+            'password'=>'required'
+
+        ],[
+            'email.required'=>'Bạn chưa nhập email',
+            'password.required'=>'Bạn chưa nhập mật khẩu'
+        ]);
+
+        $checkLogin = User::where([['email', $request->email], ['password', $request->password]])->get();
+
+        if($checkLogin){
+
+            return redirect('/trang-chu');
+        }else{
+
+            return redirect('/dang-nhap')->with('thongbao', 'Đăng nhập không thành công');
+        }
     }
 }
