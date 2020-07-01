@@ -4,6 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Đọc Truyện Online</title>
     <link href="{{asset('assets/plugins/awesome/css/all.min.css')}}">
@@ -80,8 +82,12 @@
 
             </div>
             <div class="login">
-                <span class="icon"><i class="fa fa-user"></i></span>
-                <a class="before-icon" href="#" data-toggle="modal" data-target="#modalLogin">Đăng Nhập</a>
+                @if(isset($user_login))
+                    <span>{{$user_login->name}}</span>
+                @else
+                    <span class="icon"><i class="fa fa-user"></i></span>
+                    <a class="before-icon" href="{{url('/dang-nhap')}}">Đăng Nhập</a>
+                @endif
             </div>
         </div>
     </header>
