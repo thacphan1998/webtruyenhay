@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Story extends Model
 {
-    protected $fillable = ['name', 'author', 'publisher', 'source', 'episode', 'status', 'summary', 'content', 'number_of_reads', 'number_of_downloads', 'category_id', 'user_id'];
+    protected $fillable = ['name', 'author', 'publisher', 'source', 'episode', 'status', 'summary', 'content', 'number_of_reads', 'number_of_downloads', 'category_id', 'user_id', 'author_id', 'publisher_id'];
     //
 
     public function saveStory($data)
@@ -23,6 +23,7 @@ class Story extends Model
         $this->number_of_downloads = $data['number_of_downloads'];
         $this->category_id = $data['category_id'];
         $this->author_id = $data['author_id'];
+        $this->publisher_id = $data['publisher_id'];
         $this->image = $data['image'];
         $this->user_id = 1;
         $this->slug = $data['slug'];
@@ -45,6 +46,7 @@ class Story extends Model
         $story->number_of_downloads = $data['number_of_downloads'];
         $story->category_id = $data['category_id'];
         $story->author_id = $data['author_id'];
+        $story->publisher_id = $data['publisher_id'];
         $story->slug = $data['slug'];
         $story->user_id = 1;
         $story->save();

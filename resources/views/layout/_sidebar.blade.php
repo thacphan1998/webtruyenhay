@@ -143,6 +143,30 @@
                         </li>
                     </ul>
                 </li>
+                {{-- quanr lý nhà xuất bản --}}
+                <li class="nav-item has-treeview">
+                    <a href="#" class="nav-link parent" id="parent_quanlynhaxuatban">
+                        <i class="nav-icon fas  fas fa-upload"></i>
+                        <p>
+                            Quản lý nhà xuất bản
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{url('/quanlynhaxuatban')}}" class="nav-link" id="quanlynhaxuatban">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Danh sách nhà xuất bản</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{url('/them-moi-nha-xuat-ban')}}" class="nav-link" id="them-moi-nha-xuat-ban">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Thêm mới nhà xuất bản</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

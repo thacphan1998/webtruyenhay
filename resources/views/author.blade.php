@@ -52,7 +52,7 @@
                           <form action="{{action('AuthorController@destroy', $author->id)}}" method="post">
                             {{csrf_field()}}
                             <input name="_method" type="hidden" value="DELETE">
-                            <button class="btn btn-danger" type="submit">Delete</button>
+                            <button class="btn btn-danger" type="submit" onclick="return confirm('Bạn có muốn xóa tác giả này?')">Delete</button>
                             </form>
                         </td>
                     </tr>

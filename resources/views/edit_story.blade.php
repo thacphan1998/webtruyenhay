@@ -109,10 +109,19 @@
                                 </div>
                                 {{-- Thể loại --}}
                                 <div class="form-group">
-                                    <label>Tac gia</label>
+                                    <label>Tác giả</label>
                                     <select name='author_id' class="form-control">
                                         @foreach($authors as $key=>$author)
                                         <option value="{{$author->id}}" {{$story->author_id === $author->id ? "selected" : ""}}>{{$author->name}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                {{-- Nhà xuất bản --}}
+                                <div class="form-group">
+                                    <label>Nhà xuất bản</label>
+                                    <select name='publisher_id' class="form-control">
+                                        @foreach($publishers as $key=>$publisher)
+                                        <option value="{{$publisher->id}}" {{$story->publisher_id === $publisher->id ? "selected" : ""}}>{{$publisher->name}}</option>
                                         @endforeach
                                     </select>
                                 </div>

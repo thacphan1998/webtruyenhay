@@ -6,6 +6,7 @@ use App\Category;
 use App\Author;
 use Illuminate\Http\Request;
 use App\Story;
+use App\Publisher;
 
 class StoryController extends Controller
 {
@@ -31,7 +32,8 @@ class StoryController extends Controller
     {
         $categories = Category::all();
         $authors = Author::all();
-        return view('add_new_story', compact('categories', 'authors'));
+        $publishers = Publisher::all();
+        return view('add_new_story', compact('categories', 'authors', 'publishers'));
     }
 
     /**
@@ -56,6 +58,7 @@ class StoryController extends Controller
             'number_of_downloads' => '',
             'category_id' => '',
             'author_id' => '',
+            'publisher_id' => '',
             'image' => '',
             'slug' => ''
             
@@ -87,7 +90,8 @@ class StoryController extends Controller
         $story = Story::where('id', $id)->first();
         $categories = Category::all();
         $authors = Author::all();
-        return view('edit_story', compact('story', 'id', 'categories', 'authors'));
+        $publishers = Publisher::all();
+        return view('edit_story', compact('story', 'id', 'categories', 'authors', 'publishers'));
     }
 
     /**
@@ -113,6 +117,7 @@ class StoryController extends Controller
             'number_of_downloads' => '',
             'category_id' => '',
             'author_id' => '',
+            'publisher_id' => '',
             'slug' => ''
         ]);
         $data['id'] = $id;

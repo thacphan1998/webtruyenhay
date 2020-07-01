@@ -67,7 +67,7 @@
             <div class="col-md-12 first-title">
                 <h2 class="category-title">
                     <i class="fa fa-list"></i>
-                    Danh sách truyện {{str_replace("Truyện","",$categoryName->name)}}
+                    Danh sách truyện liên quan
                 </h2>
             </div>
             @foreach($storyList as $storyListItem)

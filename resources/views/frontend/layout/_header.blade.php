@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Đọc Truyện Online</title>
     <link href="{{asset('assets/plugins/awesome/css/all.min.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/plugins/font-awesome-4.7.0/css/font-awesome.min.css')}}">
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

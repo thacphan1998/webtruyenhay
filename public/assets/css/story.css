@@ -122,7 +122,7 @@
     color: #444;
 }
 
-/* phần danh sách chương truyện */
+/* phần danh sách truyện liên quan với thể loại */
 
 .story-page .list-content .content-ds h4 {
     font-size: 15px;
@@ -277,7 +277,7 @@
     width: 100%;
 }
 
-.story-page .comment-item{
+.story-page .comment-item {
     display: flex;
     border-top: 1px solid #ccc;
     padding-top: 10px;
@@ -305,60 +305,61 @@
 
 /* phần thông tin đăng nhập bình luận */
 
-.story-page input[type=text], input[type=password] {
+.story-page input[type="text"],
+input[type="password"] {
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
     display: inline-block;
     border: 1px solid #ccc;
     box-sizing: border-box;
-  }
+}
 
-  .story-page button {
-    background-color: #0000EE;
+.story-page button {
+    background-color: #0000ee;
     color: white;
     padding: 14px 20px;
     margin: 8px 0;
     border: none;
     cursor: pointer;
     width: 100%;
-  }
+}
 
-  .story-page button:hover {
+.story-page button:hover {
     opacity: 0.8;
-  }
+}
 
-  .story-page .modal-header .close {
+.story-page .modal-header .close {
     width: 50px;
     height: 55px;
     background-color: #fff;
-  }
+}
 
-  .story-page .modal-header .close span {
+.story-page .modal-header .close span {
     color: #333;
-  }
+}
 
-  .story-page .modal-header .close span:hover {
+.story-page .modal-header .close span:hover {
     color: #000;
-  }
+}
 
-  .story-page .modal-header .modal-title {
+.story-page .modal-header .modal-title {
     text-align: center;
     width: 100%;
     font-size: 25px;
-    color: #3858B3;
-  }
+    color: #3858b3;
+}
 
-  .story-page .modal-body .container a {
+.story-page .modal-body .container a {
     color: #007bff;
     text-decoration: none;
-  }
+}
 
-  .story-page .modal-body .container a:hover {
-      color: #444;
-  }
+.story-page .modal-body .container a:hover {
+    color: #444;
+}
 
-  .story-page .modal-footer {
+.story-page .modal-footer {
     color: #000 !important;
     background-color: #f1f1f1 !important;
     padding: 8px 16px !important;
@@ -366,7 +367,7 @@
 }
 
 .story-page .icon {
-    color: #2980b9!important;
+    color: #2980b9 !important;
 }
 
 .story-page .sitemap a {
@@ -377,4 +378,54 @@
 .story-page .sitemap a:hover {
     color: #444444;
     text-decoration: none;
+}
+
+/*phần đánh giá rating*/
+
+.story-page fieldset,
+label {
+    margin: 0;
+    padding: 0;
+}
+
+/****** Style Star Rating Widget *****/
+
+.story-page .rating {
+    border: none;
+}
+
+.story-page .rating > input {
+    display: none;
+}
+.story-page .rating > label:before {
+    margin: 5px;
+    font-size: 1.25em;
+    font-family: FontAwesome;
+    display: inline-block;
+    content: "\f005";
+}
+
+.story-page .rating > .half:before {
+    content: "\f089";
+    position: absolute;
+}
+
+.story-page .rating > label {
+    color: #ddd;
+    float: right;
+}
+
+/***** CSS Magic to Highlight Stars on Hover *****/
+
+.story-page .rating > input:checked ~ label, /* show gold star when clicked */
+.story-page .rating:not(:checked) > label:hover, /* hover current star */
+.story-page .rating:not(:checked) > label:hover ~ label {
+    color: #ffd700;
+} /* hover previous stars in list */
+
+.story-page .rating > input:checked + label:hover, /* hover current star when changing rating */
+.story-page .rating > input:checked ~ label:hover,
+.story-page .rating > label:hover ~ input:checked ~ label, /* lighten current selection */
+.story-page .rating > input:checked ~ label:hover ~ label {
+    color: #ffed85;
 }

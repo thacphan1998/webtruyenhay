@@ -72,7 +72,7 @@
                           <form action="{{action('StoryController@destroy', $story->id)}}" method="post">
                             {{csrf_field()}}
                             <input name="_method" type="hidden" value="DELETE">
-                            <button class="btn btn-danger" type="submit">Delete</button>
+                            <button class="btn btn-danger" type="submit" onclick="return confirm('Bạn có muốn xóa truyện này?')">Delete</button>
                             </form>
                         </td>
                     </tr>

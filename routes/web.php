@@ -48,11 +48,22 @@ Route::get('/them-moi-tac-gia', function () {
     return view('add_new_author');
 });
 
-
 //---> Sửa
 Route::get('/sua/tacgia/{id}','AuthorController@edit');
 Route::put('/edit/author/{id}','AuthorController@update');
 Route::delete('/delete/author/{id}','AuthorController@destroy');
+
+//---> Routes Publisher
+Route::get('/quanlynhaxuatban', 'PublisherController@index');
+Route::post('/create/publisher','PublisherController@store');
+
+Route::get('/them-moi-nha-xuat-ban', function () {
+    return view('add_new_publisher');
+});
+//---> Sửa
+Route::get('/sua/nhaxuatban/{id}','PublisherController@edit');
+Route::put('/edit/publisher/{id}','PublisherController@update');
+Route::delete('/delete/publisher/{id}','PublisherController@destroy')->name('publisher-delete');
 
 Route::get('/quanlynguoidung', 'UserController@index');
 Route::post('/create/user', 'UserController@store');

@@ -120,6 +120,15 @@
                     @endforeach
                   </select>
                 </div>
+                {{-- Thể loại --}}
+                <div class="form-group">
+                  <label>Nhà xuất bản</label>
+                  <select name='publisher_id' class="form-control">
+                    @foreach($publishers as $key=>$publisher)
+                    <option value="{{$publisher->id}}">{{$publisher->name}}</option>
+                    @endforeach
+                  </select>
+                </div>
                 {{-- Slug --}}
                 <div class="form-group">
                   <label for="slug">Slug</label>

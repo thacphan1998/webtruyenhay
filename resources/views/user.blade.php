@@ -52,7 +52,7 @@
                           <form action="{{action('UserController@destroy', $user->id)}}" method="post">
                             {{csrf_field()}}
                             <input name="_method" type="hidden" value="DELETE">
-                            <button class="btn btn-danger" type="submit">Delete</button>
+                            <button class="btn btn-danger" type="submit" onclick="return confirm('Bạn có muốn xóa người dùng này?')">Delete</button>
                             </form>
                         </td>
                     </tr>

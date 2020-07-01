@@ -15,8 +15,8 @@
                   </div> -->
 
                     <div class="container">
-                        <label for="ten"><b>Tên người dùng</b></label>
-                        <input type="text" placeholder="Nhập họ và tên" name="uname" required>
+                        <label for="ten"><b>Email</b></label>
+                        <input type="text" placeholder="Nhập email" name="uname" required>
 
                         <label for="mk"><b>Mật khẩu</b></label>
                         <input type="password" placeholder="Nhập mật khẩu" name="psw" required>
@@ -35,7 +35,7 @@
             </div>
             <div class="modal-footer">
                 <span>Chưa có tài khoản?</span>
-                <a rel="nofollow" title="đăng ký thành viên" href="#">
+                <a id="btn-register" rel="nofollow" title="đăng ký thành viên" href="#" data-toggle="modal" data-target="#modalRegister">
                     <b>Đăng Ký</b>
                 </a>
             </div>
@@ -43,6 +43,47 @@
     </div>
 </div>
 {{-- END: Dang nhap --}}
+{{-- Dang ký --}}
+<div class="modal fade" id="modalRegister" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 style="color: #3858B3">Thông tin đăng ký</h2>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="/action_page.php" method="post">
+                    <!-- <div class="imgcontainer">
+                    <img src="" alt="Avatar" class="avatar">
+                  </div> -->
+
+                    <div class="container">
+                        <label for="ten"><b>Nhập họ tên</b></label>
+                        <input type="text" placeholder="Nhập họ tên" name="uname" required>
+
+                        <label for="ten"><b>Email</b></label>
+                        <input type="text" placeholder="Nhập email" name="uname" required>
+
+                        <label for="mk"><b>Mật khẩu</b></label>
+                        <input type="password" placeholder="Nhập mật khẩu" name="psw" required>
+
+                        <button type="submit" id="loginBtn">Đăng ký</button>
+                        <label>
+                            <input type="checkbox" checked="checked" name="remember" class="c-remember"> Nhớ tôi lần sau
+                        </label>
+                    </div>
+
+                    <div class="container" style="background-color:#f1f1f1">
+                        <button type="button" class="cancelbtn">Hủy bỏ</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{{-- END: Dang ký --}}
 
 <div class="support-bar">
     <a href="#" id="scroll-top" class="goto-top" title="Về Đầu Trang" rel="nofollow">
@@ -110,11 +151,15 @@
         const timeAgo = $(".time-ago");
         if (timeAgo && timeAgo.text() !== '') {
             timeAgo.each(function(index, el) {
-                const newText = $(el).text().replace('days', 'ngày').replace('day', 'ngày').replace('week', 'tuần').replace('weeks', 'tuần').replace('months', 'tháng').replace('month', 'tháng').replace('years', 'năm').replace('year', 'năm').replace('hour', 'giờ').replace('hours', 'giờ').replace('minutes', 'phút').replace('minute', 'phút').replace('seconds', 'giây').replace('second', 'giây').replace('ago', 'trước');
+                const newText = $(el).text().replace('days', 'ngày').replace('day', 'ngày').replace('weeks', 'tuần').replace('week', 'tuần').replace('months', 'tháng').replace('month', 'tháng').replace('years', 'năm').replace('year', 'năm').replace('hours', 'giờ').replace('hour', 'giờ').replace('minutes', 'phút').replace('minute', 'phút').replace('seconds', 'giây').replace('second', 'giây').replace('ago', 'trước');
                 $(el).text(newText);
             })
 
         }
+
+        $("#btn-register").click(function(){
+            $('#modalLogin').modal('hide');
+        });
     });
 </script>
 </body>
