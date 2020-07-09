@@ -12,8 +12,8 @@ class Comment extends Model
     public function saveComment($data)
     {
         $this->content = $data['content'];
-        $this->user_id = 1;
-        $this->story_id = 2;
+        $this->user_id = $data['user_id'];
+        $this->story_id = $data['story_id'];
         $this->save();
         return 1;
     }
@@ -22,8 +22,8 @@ class Comment extends Model
     {
         $comment = $this->find($data['id']);
         $comment->content = $data['content'];
-        $comment->user_id = 1;
-        $comment->story_id = 2;
+        $comment->user_id = $data['user_id'];
+        $comment->story_id = $data['story_id'];
         $comment->save();
         return 1;
     }

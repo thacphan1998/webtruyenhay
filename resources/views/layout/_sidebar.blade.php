@@ -25,11 +25,17 @@
         <!-- Sidebar Menu -->
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                <!-- Add icons to the links using the .nav-icon class
-            with font-awesome or any other icon font library -->
+            <li class="nav-item has-treeview menu-open">
+                <a href="#" class="nav-link active parent" id="parent_thong-ke">
+                    <i class="nav-icon fas fa-tachometer-alt"></i>
+                    <p>
+                        Thống kê
+                    </p>
+                </a>
+            </li>
                 <!-- Quản lý truyện -->
                 <li class="nav-item has-treeview menu-open">
-                    <a href="#" class="nav-link active parent" id="parent_quanlytruyen">
+                    <a href="#" class="nav-link active parent" id="parent_thong-ke">
                         <i class="nav-icon fas fa-book"></i>
                         <p>
                             Quản lý Truyện
@@ -167,6 +173,30 @@
                             <a href="{{url('/them-moi-nha-xuat-ban')}}" class="nav-link" id="them-moi-nha-xuat-ban">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Thêm mới nhà xuất bản</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                {{-- quanr lý truyện đã xem --}}
+                <li class="nav-item has-treeview">
+                    <a href="#" class="nav-link parent" id="parent_quanlytruyendaxem">
+                        <i class="nav-icon fas  fas fa-upload"></i>
+                        <p>
+                            Quản lý truyện đã xem
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{url('/quanlytruyendaxem')}}" class="nav-link" id="quanlytruyendaxem">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Danh sách truyện đã xem</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{url('/them-moi-truyen-da-xem')}}" class="nav-link" id="them-moi-truyen-da-xem">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Thêm mới truyện đã xem</p>
                             </a>
                         </li>
                     </ul>

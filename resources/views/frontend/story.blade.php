@@ -96,13 +96,52 @@
                                 </fieldset>
                             </div>
                             <div class="detail-button">
-                                <a class="w3-btn w3-round w3-blue w3-hover-white" title="Đọc truyện Toàn Chức Cao Thủ" href="{{url('/truyen/chi-tiet/'.$currentStory->slug)}}">
+                                {{-- {{url('/truyen/chi-tiet/'.$currentStory->slug)}} --}}
+                                <form method="post" action="{{url('/create/viewed')}}" class="d-none" id="formAddViewedStory">
+                                    <div class="card-body">
+                                    <input type="hidden" value="true" name="api" />
+
+                                        {{-- Tên nhà xuất bản --}}
+                                        <div class="form-group">
+                                            <input type="hidden" value="{{csrf_token()}}" name="_token" />
+                                            <input type="hidden" value="{{url('/truyen/chi-tiet/'.$currentStory->slug)}}" name="slug" />
+                                            <label for="user_id">ID người dùng</label>
+                                            <input value={{Auth::user()->id}} name="user_id" type="text" class="form-control" id="user_id" placeholder="Nhập người dùng">
+                                        </div>
+                                        {{-- Mô tả --}}
+                                        <div class="form-group">
+                                            <label for="story_id">ID truyện</label>
+                                            <input value={{$currentStory->id}} name="story_id" type="text" class="form-control" id="story_id" placeholder="Nhập truyện">
+                                        </div>
+                                    </div>
+                                    <!-- /.card-body -->
+                                </form>
+                                <a id="link-read-story" class="w3-btn w3-round w3-blue w3-hover-white" title="Đọc truyện Toàn Chức Cao Thủ" href="javascript:;">
                                     <i class="fa fa-eye"></i>
                                     Đọc truyện
                                 </a>
                             </div>
                             <div class="detail-button" style="margin-right: 100px; margin-left: 100px;">
-                                <button id="bt_a_d_fs" onclick="openModal('login')" class="w3-btn w3-round w3-blue w3-hover-white">
+                                <form method="post" action="{{url('/create/liked')}}" class="d-none" id="formAddLikedStory">
+                                    <div class="card-body">
+                                    <input type="hidden" value="true" name="api" />
+
+                                        {{-- Tên nhà xuất bản --}}
+                                        <div class="form-group">
+                                            <input type="hidden" value="{{csrf_token()}}" name="_token" />
+                                            <input type="hidden" value="{{url('/truyen/chi-tiet/'.$currentStory->slug)}}" name="slug" />
+                                            <label for="user_id">ID người dùng</label>
+                                            <input value="{{Auth::user()->id}}" name="user_id" type="text" class="form-control" id="user_id" placeholder="Nhập người dùng">
+                                        </div>
+                                        {{-- Mô tả --}}
+                                        <div class="form-group">
+                                            <label for="story_id">ID truyện</label>
+                                            <input value={{$currentStory->id}} name="story_id" type="text" class="form-control" id="story_id" placeholder="Nhập truyện">
+                                        </div>
+                                    </div>
+                                    <!-- /.card-body -->
+                                </form>
+                                <button id="btn-sotry-liked" class="w3-btn w3-round w3-blue w3-hover-white" >
                                     <i class="far fa-heart"></i>
                                     Thêm vào truyện Yêu Thích
                                 </button>
@@ -151,9 +190,13 @@
                                 Nhận xét của đọc giả về truyện {{$currentStory->name}}
                             </h3>
                         </div>
-                        <form class="comment-form" style="margin: 15px 0" name="formcm" action="/method/comment" method="post" enctype="multipart/form-data" onsubmit="return checkvailcm()">
+                        <form class="comment-form" style="margin: 15px 0" name="formcm" method="post" action="{{url('/create/comment')}}">
+                            <input type="hidden" value="{{csrf_token()}}" name="_token" />
+                            <input value="{{Auth::user()->id}}" name="user_id" type="hidden" class="form-control" id="user_id" >
+                            <input value="{{$currentStory->id}}" name="story_id" type="hidden" class="form-control" id="story_id">
+                            <input value="{{ url('/truyen/'.$storyListItem->slug) }}" name="slug" type="hidden" class="form-control" id="slug">
                             <div class="comment-text" style="padding: 0px 15px;">
-                                <textarea id="txtcm" name="txtcm" data-toggle="modal" data-target="#exampleModal" class="w3-round" placeholder="Nội dung bình luận tối thiểu 15 ký tự, tối đa 500 ký tự!"></textarea>
+                                <textarea id="txtcm" name="content" class="w3-round" placeholder="Nội dung bình luận tối thiểu 15 ký tự, tối đa 500 ký tự!"></textarea>
                             </div>
                             <div class="comment">
                                 <div class="col-sm-6 comment-count">
@@ -161,7 +204,7 @@
                                     <label id="ccm" class="number">0</label>
                                 </div>
                                 <div class=" col-sm-6 comment-button">
-                                    <button disabled="disabled" type="button" id="btcm" name="btcm" onclick class="w3-btn button-send">
+                                    <button type="button" id="btcm" name="btcm" onclick class="w3-btn button-send">
                                         <i class="fas fa-paper-plane"></i>
                                         Gửi
                                     </button>
@@ -181,6 +224,7 @@
                         <input type="hidden" id="comment-flag" value="true">
                         <input type="hidden" id="comment-page" value="2">
                         <div id="comment-list">
+                            @foreach ($storyComments as $itemComment)
                             <div class="row" id="comment-row-item">
                                 <div class="col-md-12">
                                     <div class="comment-item">
@@ -188,27 +232,14 @@
                                             <img alt="Avatar" class="w3-circle" width="50" height="50" src="https://f0.pngfuel.com/png/980/886/male-portrait-avatar-png-clip-art.png">
                                         </div>
                                         <div class="comment-right">
-                                            <a class="comment-user" href="#" rel="nofollow" title>Van Minh</a>
-                                            <span class="comment-date">20:05 08/05/2020</span>
-                                            <div class="comment-chat">Đọc hết rồi</div>
+                                        <a class="comment-user" href="#" rel="nofollow" title>{{$itemComment->username}}</a>
+                                            <span class="comment-date">{{$itemComment->created_at}}</span>
+                                            <div class="comment-chat">{{$itemComment->content}}</div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="row" id="comment-row-item">
-                                <div class="col-md-12">
-                                    <div class="comment-item">
-                                        <div class="comment-left">
-                                            <img alt="Avatar" class="w3-circle" width="50" height="50" src="https://f0.pngfuel.com/png/980/886/male-portrait-avatar-png-clip-art.png">
-                                        </div>
-                                        <div class="comment-right">
-                                            <a class="comment-user" href="#" rel="nofollow" title>Van Minh</a>
-                                            <span class="comment-date">20:05 08/05/2020</span>
-                                            <div class="comment-chat">Đọc hết rồi</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>
@@ -326,7 +357,31 @@
                 $(this).removeClass('open');
             }
 
-        })
+        });
+
+        $('#link-read-story').click(function(){
+            const currentUser = '{{ Auth::user()->email }}';
+            if(currentUser){
+               $('#formAddViewedStory').submit();
+            }
+        });
+
+        $('#btn-sotry-liked').click(function(){
+            const currentUser = '{{ Auth::user()->email }}';
+            console.log("currentUser", currentUser)
+            if(currentUser){
+               $('#formAddLikedStory').submit();
+            }
+        });
+
+        $("#btcm").click(function( event ) {
+            event.preventDefault();
+            const currentUser = '{{ Auth::user()->email }}';
+            console.log("currentUser", currentUser)
+            if(currentUser){
+               $('form[name=formcm').submit();
+            }
+        });
     })
 </script>
 @include('frontend.layout._footer')

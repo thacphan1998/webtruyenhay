@@ -15,7 +15,7 @@ class CommentController extends Controller
     public function index()
     {
         $comments = Comment::all();
-        
+
         return view('comment',compact('comments'));
     }
 
@@ -34,8 +34,13 @@ class CommentController extends Controller
             'story_id' => '',
 
         ]);
-       
+
+        $slug = $request->slug;
+
         $comment->saveComment($data);
+        if(!empty($slug)){
+            return redirect($slug)->with('success', 'New support ticket has been created! Wait sometime to get resolved');
+        }
         return redirect('/quanlybinhluan')->with('success', 'New support ticket has been created! Wait sometime to get resolved');
     }
      /**

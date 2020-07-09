@@ -46,6 +46,10 @@ class LoginController extends Controller
         $request->password=Hash::make($request->password);
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) {
+            $user =Auth::user();
+            if(isset($user) && $user->role === 'admin'){
+                return redirect()->intended('/')->with('status', 'Đăng nhập thành công');
+            }
             return redirect()->intended('trang-chu')->with('status', 'Đăng nhập thành công');
         }
 

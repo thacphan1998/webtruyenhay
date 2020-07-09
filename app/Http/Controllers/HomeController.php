@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Auth;
 use App\Category;
 use App\Story;
 use App\User;
+use App\Comment;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -66,12 +68,20 @@ class HomeController extends Controller
         $slug = $listPath[count($listPath) - 1];
         //---> lay category by slug
         $currentStory = Story::where('slug', $slug)->get()[0];
+        $user_id = Auth::user()->id;
+        // Get comment
+        $storyComments =  DB::table('comments')
+        ->select('comments.*', 'users.name as username')
+        ->join('users','users.id','=','comments.user_id')
+        ->where(['users.id' => $user_id, 'story_id'=> $currentStory->id])
+        ->distinct()
+        ->get();//Comment::where(['story_id'=> $currentStory->id, 'user_id' => $user_id])->get();
         $categoryName = Category::where('id', $currentStory->category_id)->get()[0];
         $categories = Category::all();
         $storyHot = Story::orderBy('number_of_downloads', 'DESC')->limit(10)->get();
         $storyLatest = Story::orderBy('created_at', 'DESC')->limit(10)->get();
         $storyList = Story::where('category_id', $currentStory->category_id)->limit(10)->get();
-        return view('frontend/story', compact('categories', 'currentStory', 'categoryName', 'storyHot', 'storyLatest', 'storyList'));
+        return view('frontend/story', compact('categories', 'currentStory', 'categoryName', 'storyHot', 'storyLatest', 'storyList', 'storyComments'));
     }
 
     /**
@@ -188,5 +198,56 @@ class HomeController extends Controller
 
             return redirect('/dang-nhap')->with('thongbao', 'Đăng nhập không thành công');
         }
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function storyViewed(Request $request)
+    {
+        //---> Lay slug from url
+        $user_id = $request->route('user_id');
+        $list_story_viewed = DB::table('stories')
+        ->select('stories.*')
+        ->join('viewed','viewed.story_id','=','stories.id')
+        ->where(['viewed.user_id' => $user_id])
+        ->distinct()
+        ->get();
+        //---> lay category by slug
+        // $currentCategory = Category::where('slug', $slug)->get()[0];
+
+        // $listStoriesByCate = Story::where('category_id', $currentCategory->id)->get();
+        //---> Lay all categories
+        $categories = Category::all();
+        $storyHot = Story::orderBy('number_of_downloads', 'DESC')->limit(10)->get();
+        $storyLatest = Story::orderBy('created_at', 'DESC')->limit(10)->get();
+
+        return view('frontend/story_viewed', compact('categories','storyHot', 'storyLatest', 'list_story_viewed'));
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function storyLiked(Request $request)
+    {
+        //---> Lay slug from url
+        $user_id = $request->route('user_id');
+        $list_story_liked = DB::table('stories')
+        ->select('stories.*')
+        ->join('liked_stories','liked_stories.story_id','=','stories.id')
+        ->where(['liked_stories.user_id' => $user_id])
+        ->distinct()
+        ->get();
+
+        //---> Lay all categories
+        $categories = Category::all();
+        $storyHot = Story::orderBy('number_of_downloads', 'DESC')->limit(10)->get();
+        $storyLatest = Story::orderBy('created_at', 'DESC')->limit(10)->get();
+
+        return view('frontend/story_liked', compact('categories','storyHot', 'storyLatest', 'list_story_liked'));
     }
 }
