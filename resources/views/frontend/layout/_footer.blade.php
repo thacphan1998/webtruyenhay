@@ -12,7 +12,7 @@
                         <h3 class="title">Giới thiệu</h3>
                     </div>
                     <div class="footer-block-content">
-                        <p><a href="#" title="Truyenhayonline">Truyenhay.com</a>- Đọc Truyện Online Miễn Phí | Truyện Hay, Truyện Mới. Website luôn cập nhật những bộ truyện mới thuộc các thể loại đặc sắc như truyện tiên hiệp, kiếm hiệp, truyện teen, tiểu thuyết ngôn tình nhanh nhất.</p>
+                        <p><a href="{{url('/trang-chu')}}" title="Truyenhayonline">Truyenhay.com</a>- Đọc Truyện Online Miễn Phí | Truyện Hay, Truyện Mới. Website luôn cập nhật những bộ truyện mới thuộc các thể loại đặc sắc như truyện tiên hiệp, kiếm hiệp, truyện teen, tiểu thuyết ngôn tình nhanh nhất.</p>
                     </div>
                 </div>
             </div>

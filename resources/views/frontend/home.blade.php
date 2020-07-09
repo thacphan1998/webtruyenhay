@@ -110,6 +110,22 @@
                 <div class=" right-content">
                     <div class="row right-content-item">
                         <div class="col-md-12">
+                            <h2 class=" category-title">Truyện Vừa Đọc<i class="fas fa-chevron-right icon icon-title" style="font-size: 20px; margin-bottom: 2px;"></i></h2>
+                        </div>
+                        <div class="col-md-12 sidebar-content" style="display: flex; padding: 0; border-bottom: 1px dashed #e5e6e9;">
+                            <div class="col-sm-2 top-left">
+                                <span class="fas fa-book"></span>
+                            </div>
+                            <div class="col-sm-10 top-right">
+                                <a title="" href=""></a>
+                                <span class="sidebar-caption">
+                                    <i class="fa fa-eye"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row right-content-item">
+                        <div class="col-md-12">
                             <h2 class=" category-title">Thể loại truyện <i class="fas fa-chevron-right icon icon-title" style="font-size: 20px; margin-bottom: 2px;"></i></h2>
                         </div>
                         @foreach($categories as $categoryItem)

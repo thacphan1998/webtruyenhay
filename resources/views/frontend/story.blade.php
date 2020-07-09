@@ -135,7 +135,10 @@
                                 <!-- <span class="row-link">Chương 172</span> -->
                             </div>
                             <div class="col-sm-2">
-                                <span class="row-text">mới đây</span>
+                                <span class="row-time">
+                                    <i class="fa fa-history"></i>
+                                    <span class="time-ago">{{str_replace('day ago','ngày trước',$storyListItem->created_at->diffForHumans())}}</span>
+                                </span>
                             </div>
                         </div>
                         @endforeach
