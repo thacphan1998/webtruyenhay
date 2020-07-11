@@ -17,7 +17,7 @@
                                         </span>
                                     </a>
                                     <a href="{{url('/trang-chu')}}" itemprop="name" class="active">
-                                        <i class="fas fa-angle-right"></i>
+                                        {{-- <i class="fas fa-angle-right"></i> --}}
                                         {{-- <span itemprop="name"> {{$storyVip->name}} </span> --}}
                                     </a>
                                     <meta itemprop="position" content="2">

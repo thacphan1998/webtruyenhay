@@ -107,7 +107,7 @@
                                         @endforeach
                                     </select>
                                 </div>
-                                {{-- Thể loại --}}
+                                {{-- Tác giả --}}
                                 <div class="form-group">
                                     <label>Tác giả</label>
                                     <select name='author_id' class="form-control">

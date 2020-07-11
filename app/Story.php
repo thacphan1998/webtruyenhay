@@ -12,7 +12,7 @@ class Story extends Model
     public function saveStory($data)
     {
         $this->name = $data['name'];
-        $this->author = $data['author'];
+        // $this->author = $data['author'];
         $this->publisher = $data['publisher'];
         $this->source = $data['source'];
         $this->episode = $data['episode'];

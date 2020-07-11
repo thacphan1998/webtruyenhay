@@ -75,7 +75,7 @@ class HomeController extends Controller
         ->join('users','users.id','=','comments.user_id')
         ->where(['users.id' => $user_id, 'story_id'=> $currentStory->id])
         ->distinct()
-        ->get();//Comment::where(['story_id'=> $currentStory->id, 'user_id' => $user_id])->get();
+        ->get();
         $categoryName = Category::where('id', $currentStory->category_id)->get()[0];
         $categories = Category::all();
         $storyHot = Story::orderBy('number_of_downloads', 'DESC')->limit(10)->get();
@@ -97,14 +97,22 @@ class HomeController extends Controller
         $listPath = explode("/", $pathURL);
         //---? lay slug
         $slug = $listPath[count($listPath) - 1];
+        // $user_id = Auth::user()->id;
         //---> lay category by slug
         $currentStory = Story::where('slug', $slug)->get()[0];
+        $storyComments =  DB::table('comments')
+        ->select('comments.*', 'users.name as username')
+        ->join('users','users.id','=','comments.user_id')
+        ->where(['comments.story_id'=> $currentStory->id])
+        ->get();
+        // var_dump($currentStory->id);
+        // var_dump($storyComments);die;
         Story::where('id', $currentStory->id)
             ->update(['number_of_reads' => $currentStory->number_of_reads + 1]);
         $categories = Category::all();
         $categoryName = Category::where('id', $currentStory->category_id)->get()[0];
         $storyList = Story::where([['category_id', '=', $currentStory->category_id], ['id', '<>', $currentStory->id]])->limit(10)->get();
-        return view('frontend/story_detail', compact('categories', 'currentStory', 'categoryName', 'storyList'));
+        return view('frontend/story_detail', compact('categories', 'currentStory', 'categoryName', 'storyList', 'storyComments'));
     }
 
     /**

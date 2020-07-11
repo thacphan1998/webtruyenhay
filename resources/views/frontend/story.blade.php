@@ -183,7 +183,7 @@
                         @endforeach
                     </div>
                     <!-- phần bình luận truyện -->
-                    <div class="row left-content-item comment-member">
+                    <div class="row left-content-item comment-member d-none">
                         <div class="col-md-12 first-title">
                             <i class="fa fa-comments" style="color: #2980b9; margin-right: 5px; font-size: 25px;"></i>
                             <h3 class="category-title">

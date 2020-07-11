@@ -16,20 +16,20 @@ class LoginController extends Controller
     }
 
 
-    protected function redirectTo()
-    {
-        $UserId = Auth::id();
+    // protected function redirectTo()
+    // {
+    //     $UserId = Auth::id();
 
-        // if(Auth::check() && Auth::user()->role == 'Inquilino')
-        // {
-        //     return redirect()->route('workspace',['id' => $UserId]);
-        // }
-        // elseif (Auth::check() && Auth::user()->role == 'Propietario')
-        // {
-        //     return redirect()->route('dashboard',['id' => $UserId]);
-        // }
-        return redirectTo('/');
-    }
+    //     // if(Auth::check() && Auth::user()->role == 'Inquilino')
+    //     // {
+    //     //     return redirect()->route('workspace',['id' => $UserId]);
+    //     // }
+    //     // elseif (Auth::check() && Auth::user()->role == 'Propietario')
+    //     // {
+    //     //     return redirect()->route('dashboard',['id' => $UserId]);
+    //     // }
+    //     return redirectTo('/');
+    // }
 
     public function login()
     {

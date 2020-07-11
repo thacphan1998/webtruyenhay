@@ -108,7 +108,7 @@
             {{-- Right --}}
             <div class="col-md-4" style="padding-left: 15px; background-color: #EEEEEE;">
                 <div class=" right-content">
-                    <div class="row right-content-item">
+                    {{-- <div class="row right-content-item">
                         <div class="col-md-12">
                             <h2 class=" category-title">Truyện Vừa Đọc<i class="fas fa-chevron-right icon icon-title" style="font-size: 20px; margin-bottom: 2px;"></i></h2>
                         </div>
@@ -123,7 +123,7 @@
                                 </span>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                     <div class="row right-content-item">
                         <div class="col-md-12">
                             <h2 class=" category-title">Thể loại truyện <i class="fas fa-chevron-right icon icon-title" style="font-size: 20px; margin-bottom: 2px;"></i></h2>

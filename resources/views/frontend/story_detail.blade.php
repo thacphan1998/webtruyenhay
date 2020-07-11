@@ -82,7 +82,10 @@
                     <!-- <span class="row-link">Chương 172</span> -->
                 </div>
                 <div class="col-sm-2">
-                    <span class="row-text">mới đây</span>
+                    <span class="row-time">
+                        <i class="fa fa-history"></i>
+                        <span class="time-ago">{{str_replace('day ago','ngày trước',$storyListItem->created_at->diffForHumans())}}</span>
+                    </span>
                 </div>
             </div>
             @endforeach
@@ -96,9 +99,13 @@
                     Nhận xét của đọc giả về truyện {{$currentStory->name}}
                 </h3>
             </div>
-            <form class="comment-form" style="margin: 15px 0" name="formcm" action="/method/comment" method="post" enctype="multipart/form-data" onsubmit="return checkvailcm()">
+            <form class="comment-form" style="margin: 15px 0" name="formcm" method="post" action="{{url('/create/comment')}}">
+                <input type="hidden" value="{{csrf_token()}}" name="_token" />
+                <input value="{{Auth::user()->id}}" name="user_id" type="hidden" class="form-control" id="user_id">
+                <input value="{{$currentStory->id}}" name="story_id" type="hidden" class="form-control" id="story_id">
+                <input value="{{ url('/truyen/chi-tiet/'.$currentStory->slug) }}" name="slug" type="hidden" class="form-control" id="slug">
                 <div class="comment-text" style="padding: 0px 15px;">
-                    <textarea id="txtcm" name="txtcm" data-toggle="modal" data-target="#exampleModal" class="w3-round" placeholder="Nội dung bình luận tối thiểu 15 ký tự, tối đa 500 ký tự!"></textarea>
+                    <textarea id="txtcm" name="content" class="w3-round" placeholder="Nhập nội dung bình luận!"></textarea>
                 </div>
                 <div class="comment">
                     <div class="col-sm-6 comment-count">
@@ -106,7 +113,7 @@
                         <label id="ccm" class="number">0</label>
                     </div>
                     <div class=" col-sm-6 comment-button">
-                        <button disabled="disabled" type="button" id="btcm" name="btcm" onclick class="w3-btn button-send">
+                        <button type="button" id="btcm" name="btcm" onclick class="w3-btn button-send">
                             <i class="fas fa-paper-plane"></i>
                             Gửi
                         </button>
@@ -126,6 +133,7 @@
             <input type="hidden" id="comment-flag" value="true">
             <input type="hidden" id="comment-page" value="2">
             <div id="comment-list">
+                @foreach ($storyComments as $itemComment)
                 <div class="row" id="comment-row-item">
                     <div class="col-md-12">
                         <div class="comment-item">
@@ -133,27 +141,14 @@
                                 <img alt="Avatar" class="w3-circle" width="50" height="50" src="https://f0.pngfuel.com/png/980/886/male-portrait-avatar-png-clip-art.png">
                             </div>
                             <div class="comment-right">
-                                <a class="comment-user" href="#" rel="nofollow" title>Van Minh</a>
-                                <span class="comment-date">20:05 08/05/2020</span>
-                                <div class="comment-chat">Đọc hết rồi</div>
+                                <a class="comment-user" href="#" rel="nofollow" title>{{$itemComment->username}}</a>
+                                <span class="comment-date">{{$itemComment->created_at}}</span>
+                                <div class="comment-chat">{{$itemComment->content}}</div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="row" id="comment-row-item">
-                    <div class="col-md-12">
-                        <div class="comment-item">
-                            <div class="comment-left">
-                                <img alt="Avatar" class="w3-circle" width="50" height="50" src="https://f0.pngfuel.com/png/980/886/male-portrait-avatar-png-clip-art.png">
-                            </div>
-                            <div class="comment-right">
-                                <a class="comment-user" href="#" rel="nofollow" title>Van Minh</a>
-                                <span class="comment-date">20:05 08/05/2020</span>
-                                <div class="comment-chat">Đọc hết rồi</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </div>
@@ -199,4 +194,16 @@
         </div>
     </div>
 </section>
+<script>
+    $(document).ready(function() {
+        $("#btcm").click(function(event) {
+            event.preventDefault();
+            const currentUser = '{{ Auth::user()->email }}';
+            console.log("currentUser", currentUser)
+            if (currentUser) {
+                $('form[name=formcm').submit();
+            }
+        });
+    })
+</script>
 @include('frontend.layout._footer')

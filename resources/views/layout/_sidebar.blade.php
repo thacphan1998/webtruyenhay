@@ -11,7 +11,7 @@
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="image">
-                <img src="{{asset('dist/img/user2-160x160.jpg')}}" class="img-circle elevation-2" alt="User Image">
+                <img src="{{asset('dist/img/IMG_2174.JPG')}}" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
                 @if (isset(Auth::user()->name))
@@ -26,7 +26,7 @@
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
             <li class="nav-item has-treeview menu-open">
-                <a href="#" class="nav-link active parent" id="parent_thong-ke">
+                <a href="{{url('/thong-ke')}}" class="nav-link active parent" id="parent_thong-ke">
                     <i class="nav-icon fas fa-tachometer-alt"></i>
                     <p>
                         Thống kê
@@ -180,7 +180,7 @@
                 {{-- quanr lý truyện đã xem --}}
                 <li class="nav-item has-treeview">
                     <a href="#" class="nav-link parent" id="parent_quanlytruyendaxem">
-                        <i class="nav-icon fas  fas fa-upload"></i>
+                        <i class="nav-icon fas  fas fa-eye"></i>
                         <p>
                             Quản lý truyện đã xem
                             <i class="right fas fa-angle-left"></i>

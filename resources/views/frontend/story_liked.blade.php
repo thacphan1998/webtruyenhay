@@ -18,7 +18,7 @@
                                     </a>
                                     <a href="{{url('/trang-chu')}}" itemprop="name" class="active">
                                         <i class="fas fa-angle-right"></i>
-                                        <span itemprop="name"> Truyện đã xem </span>
+                                        <span itemprop="name"> Truyện yêu thích </span>
                                     </a>
                                     <meta itemprop="position" content="2">
                                 </div>
